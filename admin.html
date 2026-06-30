@@ -3,73 +3,80 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin — ECOSCENT THERAPY</title>
+  <title>Admin Dashboard — ECOSCENT THERAPY</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght=300;400;500&family=Space+Mono:wght=400;700&display=swap');
 
-    :root{
-      --bg:#0D0B0E;
-      --surface:#14101A;
-      --ink:#F0EDE8;
-      --muted:#8A7F8D;
-      --gold:#C9A96E;
-      --line:rgba(201,169,110,.22);
-      --ok:#6EE7B7;
-      --bad:#F87171;
+    :root {
+      --cream:    #F7F2EA;
+      --sage:     #7A8C72;
+      --deep:     #2C3B2D;
+      --cinnamon: #A0522D;
+      --jasmine:  #D4AF7A;
+      --mist:     #BFC9BA;
+      --ink:      #1C2419;
+      --white:    #FDFAF5;
+      --bad:      #A84343;
+      --ok:       #4A6E4B;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,system-ui;background:linear-gradient(180deg,#0D0B0E 0%,#120E16 100%);color:var(--ink);overflow-x:hidden}
-    header{position:sticky;top:0;z-index:10;background:rgba(13,11,14,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    .wrap{max-width:1100px;margin:0 auto;padding:1.25rem 1rem}
-    .topbar{display:flex;gap:1rem;align-items:center;justify-content:space-between}
-    .brand{font-family:'Cormorant Garamond',serif;font-weight:600;letter-spacing:.04em}
-    .brand span{color:var(--gold)}
-    .tag{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 
-    .card{background:rgba(20,16,26,.72);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden}
-    .card-hd{padding:1rem 1.1rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .card-hd h2{font-size:1rem;font-family:'Space Mono',monospace;letter-spacing:.16em;text-transform:uppercase}
-    .card-bd{padding:1.1rem}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
 
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247, 242, 234, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--mist);
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.2rem 2rem; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: .04em; color: var(--deep); }
+    .brand span { color: var(--sage); }
+    .tag { font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sage); margin-top: 0.2rem; }
 
-    label{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;font-family:'Space Mono',monospace}
-    input,textarea,select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.18);color:var(--ink);padding:.85rem .9rem;border-radius:10px;outline:none}
-    textarea{min-height:120px;resize:vertical}
-    input:focus,textarea:focus,select:focus{border-color:rgba(201,169,110,.55);box-shadow:0 0 0 3px rgba(201,169,110,.12)}
+    .card { background: var(--white); border: 1px solid var(--mist); border-radius: 4px; box-shadow: 0 10px 30px rgba(44,59,45,0.05); overflow: hidden; margin-bottom: 2rem; }
+    .card-hd { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--mist); display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: rgba(44,59,45,0.02); }
+    .card-hd h2 { font-size: .85rem; font-family: 'Space Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--deep); }
+    .card-bd { padding: 1.5rem; }
 
-    .btn-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.8rem}
-    button{cursor:pointer;border:none;border-radius:12px;padding:.85rem 1rem;font-weight:600;letter-spacing:.06em}
-    .btn-primary{background:var(--gold);color:#1a1306}
-    .btn-primary:hover{filter:brightness(1.05)}
-    .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-    .btn-ghost:hover{background:rgba(255,255,255,.05)}
-    .btn-danger{background:rgba(248,113,113,.14);color:#ffd7d7;border:1px solid rgba(248,113,113,.35)}
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    @media(max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 
-    .pill{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.78rem}
-    .pill strong{color:var(--ink)}
+    label { display: block; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--deep); margin-bottom: .45rem; font-family: 'Space Mono', monospace; font-weight: 500; }
+    input, textarea, select { width: 100%; background: var(--cream); border: 1px solid var(--mist); color: var(--ink); padding: .85rem 1rem; outline: none; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: border-color 0.2s; }
+    input:focus, textarea:focus, select:focus { border-color: var(--sage); }
+    textarea { min-height: 120px; resize: vertical; }
 
-    ul{list-style:none}
-    .list{display:flex;flex-direction:column;gap:.65rem}
-    .item{border:1px solid rgba(201,169,110,.18);background:rgba(255,255,255,.03);border-radius:12px;padding:.85rem .9rem}
-    .item-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.55rem}
-    .item-title{font-weight:700}
-    .item-meta{color:var(--muted);font-size:.78rem;line-height:1.5}
-    .item-body{color:rgba(240,237,232,.9);font-size:.88rem;line-height:1.6;white-space:pre-wrap}
+    .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1rem; }
+    button { cursor: pointer; border: none; padding: .8rem 1.5rem; font-size: 0.75rem; font-family: 'Space Mono', monospace; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; display: inline-block; transition: all 0.2s; }
+    .btn-primary { background: var(--deep); color: var(--white); }
+    .btn-primary:hover { background: var(--sage); }
+    .btn-ghost { background: transparent; color: var(--deep); border: 1px solid var(--deep); }
+    .btn-ghost:hover { background: var(--deep); color: var(--white); }
+    .btn-danger { background: transparent; color: var(--bad); border: 1px solid var(--bad); }
+    .btn-danger:hover { background: var(--bad); color: var(--white); }
 
-    .hidden{display:none}
-    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:1.2rem;z-index:999;max-width:92vw;background:rgba(20,16,26,.9);border:1px solid var(--line);padding:.85rem 1rem;border-radius:12px;box-shadow:0 18px 60px rgba(0,0,0,.45)}
-    .toast.ok{border-color:rgba(110,231,183,.35);color:var(--ok)}
-    .toast.bad{border-color:rgba(248,113,113,.35);color:var(--bad)}
+    .pill { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .7rem; border: 1px solid var(--mist); background: var(--cream); color: var(--deep); font-size: .7rem; font-family: 'Space Mono', monospace; }
+    .pill strong { color: var(--cinnamon); }
 
-    .mono{font-family: 'Space Mono', monospace}
-    .small{font-size:.82rem;color:var(--muted)}
+    .list { display: flex; flex-direction: column; gap: .85rem; }
+    .item { border: 1px solid var(--mist); background: var(--white); padding: 1.1rem; border-radius: 2px; }
+    .item-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; }
+    .item-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--deep); }
+    .item-meta { color: var(--sage); font-size: .75rem; font-family: 'Space Mono', monospace; margin-top: 0.2rem; }
+    .item-body { color: var(--ink); font-size: .9rem; line-height: 1.6; white-space: pre-wrap; font-weight: 300; margin-top: 0.5rem; }
 
-    .modal-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+    .hidden { display: none !important; }
+    .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; z-index: 1000; background: var(--deep); color: var(--white); padding: .85rem 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-left: 4px solid var(--jasmine); }
 
-    /* Export textarea */
-    .export-box{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.18);color:var(--ink);border-radius:12px;padding:.9rem}
+    #modalOverlay { position: fixed; inset: 0; background: rgba(44,59,45,0.4); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .export-box { width: 100%; background: var(--cream); border: 1px solid var(--mist); color: var(--ink); font-family: 'Space Mono', monospace; font-size: 0.8rem; padding: .9rem; }
   </style>
 </head>
 <body>
@@ -78,99 +85,96 @@
       <div class="topbar">
         <div>
           <div class="brand">ECOSCENT<span>THERAPY</span></div>
-          <div class="tag">ADMIN PANEL · localStorage</div>
+          <div class="tag">Panel Manajemen Konten</div>
         </div>
-        <div class="pill">Mode: <strong>Local</strong></div>
+        <div class="pill">Dashboard: <strong>Sistem Lokal</strong></div>
       </div>
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- Auth -->
-    <section id="authCard" class="card">
+  <main class="wrap" style="margin-top: 2rem;">
+    <section id="authCard" class="card" style="max-width: 500px; margin: 4rem auto;">
       <div class="card-hd">
-        <h2>Login</h2>
+        <h2>Otentikasi Administrator</h2>
       </div>
       <div class="card-bd">
-        <p class="small" style="margin-bottom:.8rem">Masukkan password admin untuk melihat &amp; mengelola konten.</p>
-        <div class="grid">
-          <div>
-            <label>Password</label>
-            <input id="pw" type="password" placeholder="ecoscentadmin2025"/>
-          </div>
-          <div style="display:flex;align-items:flex-end">
-            <div>
-              <button class="btn-primary" id="btnLogin">Masuk</button>
-              <div class="small" style="margin-top:.6rem">Tip: password default sudah diset sesuai prompt.</div>
-            </div>
-          </div>
+        <p style="font-size: .82rem; color: #5a6e5b; margin-bottom: 1.2rem">Masukkan kunci akses untuk memuat database konten terenkripsi lokal.</p>
+        <div style="margin-bottom: 1.2rem;">
+          <label>Kunci Akses</label>
+          <input id="pw" type="password" placeholder="•••••••••••••••" autofocus/>
         </div>
-        <div id="authErr" class="small" style="color:var(--bad);margin-top:.9rem;display:none">Password salah.</div>
+        <div>
+          <button class="btn-primary" id="btnLogin" style="width: 100%;">Masuk Sistem</button>
+        </div>
+        <div id="authErr" style="color: var(--bad); margin-top: 1rem; display: none; font-family: 'Space Mono', monospace; font-size: .82rem;">🔒 Akses ditolak. Kunci sandi salah.</div>
       </div>
     </section>
 
-    <!-- Admin content -->
     <section id="adminRoot" class="hidden">
-      <div class="grid" style="margin-top:1rem">
+      <div class="grid">
         <div class="card">
-          <div class="card-hd"><h2>Afirmasi</h2><span class="pill">Entries: <strong id="countAfirmasi">0</strong></span></div>
-          <div class="card-bd">
-            <div class="list" id="listAfirmasi"></div>
-            <div class="btn-row">
-              <button class="btn-ghost" id="btnAddAfirmasi">Tambah</button>
-              <button class="btn-danger" id="btnClearAfirmasi">Reset</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-hd"><h2>Blog</h2><span class="pill">Artikel: <strong id="countBlog">0</strong></span></div>
-          <div class="card-bd">
-            <div class="list" id="listBlog"></div>
-            <div class="btn-row">
-              <button class="btn-ghost" id="btnAddBlog">Tambah</button>
-              <button class="btn-danger" id="btnClearBlog">Reset</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid" style="margin-top:1rem">
-        <div class="card">
-          <div class="card-hd"><h2>Diary (Semua Varian)</h2><span class="pill">Entries: <strong id="countDiary">0</strong></span></div>
-          <div class="card-bd">
-            <div class="list" id="listDiary"></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-hd"><h2>Keluh Kesah (Notes)</h2><span class="pill">Pesan: <strong id="countNotes">0</strong></span></div>
-          <div class="card-bd">
-            <div class="list" id="listNotes"></div>
-            <div class="btn-row">
-              <button class="btn-danger" id="btnClearNotes">Reset</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:1rem">
-        <div class="card-hd"><h2>Export JSON</h2><span class="small">Copy format data dari localStorage</span></div>
-        <div class="card-bd">
-          <div class="btn-row">
-            <button class="btn-primary" id="btnExport">Export &amp; Copy</button>
-          </div>
-          <textarea id="exportBox" class="export-box" style="margin-top:1rem" rows="8" readonly></textarea>
-          <div class="small" style="margin-top:.65rem">Data bersumber dari key berikut: <span class="mono">ecoscent_affirmations</span>, <span class="mono">ecoscent_blog</span>, <span class="mono">ecoscent_diary</span>, <span class="mono">ecoscent_notes</span>.</div>
-        </div>
-      </div>
-
-      <!-- Modals -->
-      <div id="modalOverlay" class="hidden" style="position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem">
-        <div class="card" style="width:min(900px, 100%);">
           <div class="card-hd">
-            <h2 id="modalTitle">Modal</h2>
-            <button class="btn-ghost" id="btnModalClose" style="padding:.6rem .8rem">Tutup</button>
+            <h2>Koleksi Afirmasi Halaman Utama</h2>
+            <span class="pill">Total: <strong id="countAfirmasi">0</strong></span>
+          </div>
+          <div class="card-bd">
+            <div class="list" id="listAfirmasi" style="max-height: 350px; overflow-y: auto; margin-bottom: 1rem;"></div>
+            <div class="btn-row">
+              <button class="btn-ghost" id="btnAddAfirmasi">Tambah Entri</button>
+              <button class="btn-danger" id="btnClearAfirmasi">Reset Default</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd">
+            <h2>Artikel Edukasi Mental Health</h2>
+            <span class="pill">Artikel: <strong id="countBlog">0</strong></span>
+          </div>
+          <div class="card-bd">
+            <div class="list" id="listBlog" style="max-height: 350px; overflow-y: auto; margin-bottom: 1rem;"></div>
+            <div class="btn-row">
+              <button class="btn-ghost" id="btnAddBlog">Tulis Artikel</button>
+              <button class="btn-danger" id="btnClearBlog">Reset Default</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hd">
+          <h2>Database Ruang Cerita (Diary Wall)</h2>
+          <span class="pill">Total Entri: <strong id="countDiary">0</strong></span>
+        </div>
+        <div class="card-bd">
+          <div style="margin-bottom: 1.5rem; max-width: 300px;">
+            <label>Penapis Varian Scent</label>
+            <select id="diaryVariantFilter">
+              <option value="all">Semua Cerita</option>
+              <option value="cinnamon">Cinnamon (Fokus)</option>
+              <option value="jasmine">Jasmine (Tenang)</option>
+              <option value="coffee">Coffee (Semangat)</option>
+            </select>
+          </div>
+          <div class="list" id="listDiary" style="max-height: 400px; overflow-y: auto;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-hd">
+          <h2>Ekspor Data Objek Konten (JSON)</h2>
+        </div>
+        <div class="card-bd">
+          <button class="btn-primary" id="btnExport" style="margin-bottom: 1rem;">Salin Payload JSON</button>
+          <textarea id="exportBox" class="export-box" rows="5" readonly placeholder="Payload JSON data..."></textarea>
+        </div>
+      </div>
+
+      <div id="modalOverlay" class="hidden">
+        <div class="card" style="width: min(600px, 100%); margin-bottom: 0;">
+          <div class="card-hd">
+            <h2 id="modalTitle">Manajemen Konten</h2>
+            <button class="btn-ghost" id="btnModalClose" style="padding: .4rem .8rem; font-size: 0.65rem;">Tutup</button>
           </div>
           <div class="card-bd" id="modalBody"></div>
         </div>
@@ -181,464 +185,158 @@
   <script>
     const KEY_A = 'ecoscent_affirmations';
     const KEY_B = 'ecoscent_blog';
-    const KEY_D = 'ecoscent_diary';
-    const KEY_N = 'ecoscent_notes';
+    const KEY_D_CINNAMON = 'ecoscent_diary_cinnamon';
+    const KEY_D_JASMINE = 'ecoscent_diary_jasmine';
+    const KEY_D_COFFEE = 'ecoscent_diary_coffee';
 
     const DEFAULT_A = [
       'Tugasmu menumpuk? Kamu sudah berhasil melewati hari-hari lebih berat dari ini.',
-      'Nilai bukan satu-satunya ukuran hidupmu.',
+      'Nilai bukan satu-satunya ukuran masa depan hidupmu.',
       'Lelah itu wajar. Yang penting kamu tidak menyerah.',
-      'Pelan-pelan juga maju. Langkah kecil tetap berarti.',
-      'Kamu berhak istirahat tanpa rasa bersalah.',
-      'Kamu tidak sendirian. Banyak orang juga sedang berjuang.',
-      'Ujian bukan penentu identitasmu—usahamu yang sedang kamu bangun.',
-      'Satu bab selesai hari ini sudah cukup untuk merawat harimu.',
-      'Kamu boleh takut, tapi tetap bisa bertindak dengan perlahan.',
-      'Kamu layak mendapatkan dukungan dan belas kasih.',
-      'Ketika fokus sulit, tarik napas dan kembali ke satu langkah berikutnya.',
-      'Prosesmu sedang berjalan, bahkan saat rasanya mandek.',
-      'Kamu mampu, meski belum merasa siap.',
-      'Kamu boleh mengulang dan memperbaiki—itu bagian dari belajar.',
-      'Kamu pantas mendapat masa depan yang tenang.',
-      'Tak perlu membuktikan semuanya sekaligus.',
-      'Kamu bisa memulai dari yang paling kecil.',
-      'Istirahatmu adalah investasi untuk kemampuanmu besok.',
-      'Kamu sedang belajar mengelola stres, bukan menghilangkannya seketika.',
-      'Kamu punya suara untuk meminta bantuan.'
+      'Pelan-pelan juga maju. Langkah kecil tetaplah sebuah progres.'
     ];
 
     const DEFAULT_B = [
-      {
-        id: crypto.randomUUID(),
-        judul: 'Aku Hampir Drop Out, Tapi Aromaterapi Menyelamatkan Malam-Malamku',
-        kategori: 'Kesehatan Mental',
-        isi: 'Ada masa ketika jam dinding terasa bergerak terlalu lambat, tapi kepala justru berlari terlalu cepat. Setiap malam aku memaksakan diri menyelesaikan tugas dan laporan, sambil menahan rasa takut—takut gagal, takut tidak cukup baik, takut nanti semua yang kupelajari tidak ada gunanya. Saat itu aku menemukan ritual kecil: menyalakan lilin aromaterapi, menghirup pelan, lalu menuliskan satu kalimat jujur tentang apa yang sedang kuhadapi. Aromanya tidak menghapus masalah, tapi membuat aku bisa bernapas kembali. Dari napas yang lebih tenang, aku jadi mampu menyusun langkah: satu halaman dulu, satu paragraf dulu, satu revisi dulu. Perlahan, malam yang tadinya terasa menindih berubah menjadi tempat aku pulih dan melanjutkan. Aku akhirnya sadar: ketenangan adalah cara tubuh dan pikiran mengatakan bahwa aku masih di sini, masih berusaha, dan masih punya kesempatan.'
-      },
-      {
-        id: crypto.randomUUID(),
-        judul: 'Skripsi Bab 3 Stuck 3 Bulan: Ini yang Aku Lakukan',
-        kategori: 'Skripsi',
-        isi: 'Bab 3 skripsi seperti ruangan yang lampunya mati: semua terlihat gelap, dan kita sulit melihat jalan keluar. Tiga bulan aku berhenti menulis—bukan karena tidak bisa, tapi karena takut salah dan takut ternyata tidak sesuai ekspektasi. Setelah berkali-kali menunda, aku akhirnya mencoba pendekatan yang berbeda. Aku memecah target menjadi micro-goal: 10 menit baca landasan teori, 10 menit merangkum poin penting, lalu 10 menit menulis ulang dengan bahasaku sendiri. Saat mulai merasa mentok, aku menyalakan lilin dan melakukan grounding singkat: duduk, rasakan posisi tubuh, tarik napas empat hitungan, hembuskan enam hitungan. Yang mengejutkan, setelah sesi itu aku tidak tiba-tiba jadi jenius; aku hanya kembali ke mode “mulai”. Dari “mulai” itulah Bab 3 bergerak lagi. Pelan-pelan, aku mengumpulkan bukti bahwa stuck tidak selalu berarti gagal—kadang berarti kita butuh strategi yang lebih ramah.'
-      },
-      {
-        id: crypto.randomUUID(),
-        judul: 'Ketika IPK Jatuh, Aku Belajar Hal Paling Berharga',
-        kategori: 'Refleksi',
-        isi: 'Saat nilai diumumkan, aku merasa seperti sedang jatuh sendiri. IPK turun, dan aku langsung menilai diriku terlalu cepat: “aku gagal”, “aku tidak cukup pintar”, “aku pasti mengecewakan”. Tapi waktu berjalan, aku melihat sesuatu yang lebih besar dari angka. Aku belajar bahwa kemampuan akademik tidak identik dengan harga diri. Aku belajar menyusun ulang jadwal yang lebih realistis, mengatur energi, dan meminta bantuan ketika kesulitan. Aku juga belajar memvalidasi emosi—agar rasa kecewa tidak berubah menjadi kebiasaan menyerah. Dari pengalaman itu, aku akhirnya bisa berkata: aku sedang tumbuh. Nilai memang penting, tapi cara kita merawat diri saat mengejar nilai jauh lebih menentukan.'
-      },
-      {
-        id: crypto.randomUUID(),
-        judul: 'Cara Aku Melewati Sidang dengan Wangi Jasmine di Mejaku',
-        kategori: 'Sidang',
-        isi: 'Hari sidang datang lebih cepat daripada yang kupikir. Jantungku terasa seperti ingin keluar dari dada. Aku membawa lilin kecil varian jasmine, dan menjelang sidang aku menyalakannya di ruang tunggu. Aku tidak mengharapkan aroma membuat semua menjadi sempurna. Aku hanya butuh alat untuk menurunkan intensitas panik. Aku menghirup pelan, mengucap satu kalimat afirmasi, lalu membaca poin-poin penting yang sudah ku siapkan. Ketika gugup menyerang lagi, aku kembali ke napas, kembali ke satu pertanyaan, lalu kembali menjawab dengan jujur sesuai persiapan. Sidangku tidak menjadi “tidak ada error” — tapi sidangku menjadi lebih terkontrol. Aku belajar bahwa kesiapan bukan berarti tidak takut. Kesiapan adalah kemampuan untuk tetap hadir meski rasa takut ada.'
-      }
+      { id: "b1", judul: 'Aromaterapi Menyelamatkan Malam-Malam Overthinking-ku', kategori: 'Self Care', isi: 'Ketika kepala berlari terlalu cepat di malam hari, aroma yang tepat membantu paru-paru mengambil napas lebih dalam dan tenang...' },
+      { id: "b2", judul: 'Skripsi Stuck dan Menghadapi Burnout Akademik', kategori: 'Edukasi', isi: 'Berhenti sejenak bukan berarti gagal. Terkadang, kamu hanya perlu ruang aman untuk mengistirahatkan pikiran yang lelah.' }
     ];
 
-    function load(key, fallback){
-      try{
-        const raw = localStorage.getItem(key);
-        if(!raw) return fallback;
-        const parsed = JSON.parse(raw);
-        return parsed ?? fallback;
-      }catch{ return fallback; }
-    }
-    function save(key, value){
-      localStorage.setItem(key, JSON.stringify(value));
-    }
-    function toast(msg, type='ok'){
-      const el = document.createElement('div');
-      el.className = 'toast ' + (type==='bad'?'bad':'ok');
-      el.textContent = msg;
-      document.body.appendChild(el);
-      setTimeout(()=>{el.remove();}, 2200);
-    }
-
-    function ensureDefaults(){
-      if(!localStorage.getItem(KEY_A)) save(KEY_A, DEFAULT_A);
-      if(!localStorage.getItem(KEY_B)) save(KEY_B, DEFAULT_B);
-      if(!localStorage.getItem(KEY_D)) save(KEY_D, []);
-      if(!localStorage.getItem(KEY_N)) save(KEY_N, []);
-    }
-
-    function formatDate(iso){
-      try{
-        const d = new Date(iso);
-        return d.toLocaleDateString('id-ID', {year:'numeric',month:'short',day:'2-digit'}) + ' ' + d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});
-      }catch{ return iso; }
-    }
-
-    function setModal(title, bodyHtml){
-      document.getElementById('modalTitle').textContent = title;
-      document.getElementById('modalBody').innerHTML = bodyHtml;
-      document.getElementById('modalOverlay').classList.remove('hidden');
-    }
-    function closeModal(){
-      document.getElementById('modalOverlay').classList.add('hidden');
-    }
+    function load(k, fb){ try{ return JSON.parse(localStorage.getItem(k)) || fb; }catch{ return fb; } }
+    function save(k, v){ localStorage.setItem(k, JSON.stringify(v)); }
+    function toast(m){ const e=document.createElement('div'); e.className='toast'; e.textContent=m; document.body.appendChild(e); setTimeout(()=>e.remove(), 2000); }
 
     function renderAfirmasi(){
-      const list = document.getElementById('listAfirmasi');
       const arr = load(KEY_A, DEFAULT_A);
-      document.getElementById('countAfirmasi').textContent = String(arr.length);
-      list.innerHTML = '';
-      arr.forEach((txt, idx)=>{
-        const div = document.createElement('div');
-        div.className = 'item';
-        div.innerHTML = `
-          <div class="item-hd">
-            <div>
-              <div class="item-title">Afirmasi #${idx+1}</div>
-              <div class="item-meta">Index: <span class="mono">${idx}</span></div>
-            </div>
-            <div class="modal-actions">
-              <button class="btn-ghost" data-act="edit" data-idx="${idx}" style="padding:.55rem .75rem">Edit</button>
-              <button class="btn-danger" data-act="del" data-idx="${idx}" style="padding:.55rem .75rem">Hapus</button>
-            </div>
-          </div>
-          <div class="item-body">${escapeHtml(txt)}</div>
-        `;
-        list.appendChild(div);
+      document.getElementById('countAfirmasi').textContent = arr.length;
+      const c = document.getElementById('listAfirmasi'); c.innerHTML='';
+      arr.forEach((t, i)=>{
+        const d = document.createElement('div'); d.className='item';
+        d.innerHTML=`<div class="item-hd"><div><div class="item-title">Kutipan #${i+1}</div></div>
+        <div><button class="btn-ghost" onclick="editAf(${i})" style="padding:.3rem .6rem; font-size:.65rem">Ubah</button>
+        <button class="btn-danger" onclick="delAf(${i})" style="padding:.3rem .6rem; font-size:.65rem">Hapus</button></div></div>
+        <div class="item-body">${escapeHtml(t)}</div>`;
+        c.appendChild(d);
       });
     }
 
     function renderBlog(){
-      const list = document.getElementById('listBlog');
       const arr = load(KEY_B, DEFAULT_B);
-      document.getElementById('countBlog').textContent = String(arr.length);
-      list.innerHTML = '';
+      document.getElementById('countBlog').textContent = arr.length;
+      const c = document.getElementById('listBlog'); c.innerHTML='';
       arr.forEach((b)=>{
-        const div = document.createElement('div');
-        div.className = 'item';
-        div.innerHTML = `
-          <div class="item-hd">
-            <div>
-              <div class="item-title">${escapeHtml(b.judul)}</div>
-              <div class="item-meta">Kategori: ${escapeHtml(b.kategori || '-')} · ID: <span class="mono">${escapeHtml(String(b.id).slice(0,8))}</span></div>
-            </div>
-            <div class="modal-actions">
-              <button class="btn-ghost" data-act="editb" data-id="${escapeAttr(b.id)}" style="padding:.55rem .75rem">Edit</button>
-              <button class="btn-danger" data-act="delb" data-id="${escapeAttr(b.id)}" style="padding:.55rem .75rem">Hapus</button>
-            </div>
-          </div>
-          <div class="item-body">${escapeHtml(shortText(b.isi, 220))}</div>
-        `;
-        list.appendChild(div);
+        const d = document.createElement('div'); d.className='item';
+        d.innerHTML=`<div class="item-hd"><div><div class="item-title">${escapeHtml(b.judul)}</div>
+        <div class="item-meta">Rubrik: ${escapeHtml(b.kategori)}</div></div><div>
+        <button class="btn-ghost" onclick="editBl('${b.id}')" style="padding:.3rem .6rem; font-size:.65rem">Ubah</button>
+        <button class="btn-danger" onclick="delBl('${b.id}')" style="padding:.3rem .6rem; font-size:.65rem">Hapus</button></div></div>
+        <div class="item-body">${escapeHtml(b.isi)}</div>`;
+        c.appendChild(d);
       });
     }
 
     function renderDiary(){
-      const list = document.getElementById('listDiary');
-      const arr = load(KEY_D, []);
-      let total = 0;
-      arr.forEach(()=>total++);
-      document.getElementById('countDiary').textContent = String(total);
-      list.innerHTML = '';
+      const f = document.getElementById('diaryVariantFilter').value;
+      const cin = load(KEY_D_CINNAMON, []).map((e,i)=>({...e, variant:'Cinnamon', key:KEY_D_CINNAMON, idx:i}));
+      const jas = load(KEY_D_JASMINE, []).map((e,i)=>({...e, variant:'Jasmine', key:KEY_D_JASMINE, idx:i}));
+      const cof = load(KEY_D_COFFEE, []).map((e,i)=>({...e, variant:'Coffee', key:KEY_D_COFFEE, idx:i}));
+      
+      let mix = [...cin, ...jas, ...cof];
+      if(f!=='all') mix = mix.filter(x => x.variant.toLowerCase() === f);
+      mix.sort((a,b)=> (b.tanggal||'').localeCompare(a.tanggal||''));
 
-      const sorted = [...arr].sort((a,b)=> (b.tanggal||'').localeCompare(a.tanggal||''));
-      if(sorted.length===0){
-        list.innerHTML = `<div class="small">Belum ada entri diary.</div>`;
-        return;
-      }
+      document.getElementById('countDiary').textContent = mix.length;
+      const c = document.getElementById('listDiary'); c.innerHTML='';
 
-      sorted.slice(0, 60).forEach((d)=>{
-        const div = document.createElement('div');
-        div.className='item';
-        div.innerHTML = `
-          <div class="item-hd">
-            <div>
-              <div class="item-title">${escapeHtml(d.jenisVarian || '-').toString()}</div>
-              <div class="item-meta">Tanggal: ${escapeHtml(formatDate(d.tanggal))} · Nama: ${escapeHtml(d.nama || 'Anonim')}</div>
-            </div>
-            <div class="pill">Mood: <strong>${escapeHtml(d.mood || '🙂')}</strong></div>
-          </div>
-          <div class="item-body">${escapeHtml(d.cerita || '')}</div>
-        `;
-        list.appendChild(div);
-      });
-      if(arr.length>60){
-        const more = document.createElement('div');
-        more.className='small';
-        more.textContent = `Menampilkan 60 dari ${arr.length} entri (untuk mencegah tampilan terlalu panjang).`;
-        list.appendChild(more);
-      }
-    }
-
-    function renderNotes(){
-      const list = document.getElementById('listNotes');
-      const arr = load(KEY_N, []);
-      document.getElementById('countNotes').textContent = String(arr.length);
-      list.innerHTML='';
-      if(arr.length===0){
-        list.innerHTML = `<div class="small">Belum ada pesan.</div>`;
-        return;
-      }
-      const sorted = [...arr].sort((a,b)=>(b.tanggal||'').localeCompare(a.tanggal||''));
-      sorted.slice(0,80).forEach(n=>{
-        const div=document.createElement('div');
-        div.className='item';
-        div.innerHTML=`
-          <div class="item-hd">
-            <div>
-              <div class="item-title">${escapeHtml(n.nama || 'Anonim')}</div>
-              <div class="item-meta">${escapeHtml(n.kampus || '-')} · ${escapeHtml(formatDate(n.tanggal))}</div>
-            </div>
-            <div class="pill">Semester: <strong>${escapeHtml(n.semester || '-')}</strong></div>
-          </div>
-          <div class="item-body">${escapeHtml(n.pesan || '')}</div>
-        `;
-        list.appendChild(div);
+      if(!mix.length){ c.innerHTML='<p class="small" style="text-align:center;padding:1rem;">Belum ada kiriman cerita.</p>'; return; }
+      mix.forEach((d)=>{
+        const el = document.createElement('div'); el.className='item';
+        el.innerHTML=`<div class="item-hd"><div><div class="item-title" style="font-size:1rem;color:var(--cinnamon)">${escapeHtml(d.nama||'Anonim')}</div>
+        <div class="item-meta">${escapeHtml(d.kampus||'')} · ${d.variant}</div></div>
+        <button class="btn-danger" onclick="delDiary('${d.key}', ${d.idx})" style="padding:.3rem .6rem; font-size:.65rem">Hapus</button></div>
+        <div class="item-body" style="font-style:italic; background:var(--cream); padding:0.6rem; border-left:2px solid var(--sage)">"${escapeHtml(d.cerita)}"</div>`;
+        c.appendChild(el);
       });
     }
 
-    function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'<','>':'>','"':'"',"'":'&#39;'}[c]));
-    }
-    function escapeAttr(s){
-      return escapeHtml(s).replace(/\s+/g,' ');
-    }
-    function shortText(s, n){
-      const t = String(s||'');
-      return t.length>n ? t.slice(0,n).trim() + '…' : t;
-    }
+    window.editAf = (i)=>{
+      const arr = load(KEY_A, DEFAULT_A);
+      setModal('Ubah Afirmasi', `<textarea id="mdTxt" style="min-height:100px">${escapeHtml(arr[i])}</textarea>
+      <button class="btn-primary" style="margin-top:1rem" onclick="saveAf(${i})">Simpan</button>`);
+    };
+    window.saveAf = (i)=>{
+      const arr = load(KEY_A, DEFAULT_A); const v = document.getElementById('mdTxt').value.trim();
+      if(!v) return; arr[i]=v; save(KEY_A, arr); closeModal(); toast('Afirmasi diubah'); renderAfirmasi();
+    };
+    window.delAf = (i)=>{
+      if(!confirm('Hapus afirmasi ini?')) return;
+      const arr = load(KEY_A, DEFAULT_A); arr.splice(i,1); save(KEY_A, arr); renderAfirmasi();
+    };
 
-    function renderAll(){
-      renderAfirmasi();
-      renderBlog();
-      renderDiary();
-      renderNotes();
-    }
+    window.editBl = (id)=>{
+      const arr = load(KEY_B, DEFAULT_B); const t = arr.find(x=>x.id===id); if(!t) return;
+      setModal('Ubah Artikel', `<label>Judul</label><input id="mdJd" value="${escapeHtml(t.judul)}"/><br/><br/>
+      <label>Kategori</label><input id="mdKt" value="${escapeHtml(t.kategori)}"/><br/><br/>
+      <label>Isi</label><textarea id="mdIsi" style="min-height:150px">${escapeHtml(t.isi)}</textarea>
+      <button class="btn-primary" style="margin-top:1rem" onclick="saveBl('${id}')">Simpan</button>`);
+    };
+    window.saveBl = (id)=>{
+      const arr = load(KEY_B, DEFAULT_B); const t = arr.find(x=>x.id===id);
+      t.judul = document.getElementById('mdJd').value.trim();
+      t.kategori = document.getElementById('mdKt').value.trim();
+      t.isi = document.getElementById('mdIsi').value.trim();
+      save(KEY_B, arr); closeModal(); toast('Artikel disimpan'); renderBlog();
+    };
+    window.delBl = (id)=>{
+      if(!confirm('Hapus artikel ini?')) return;
+      let arr = load(KEY_B, DEFAULT_B); arr = arr.filter(x=>x.id!==id); save(KEY_B, arr); renderBlog();
+    };
+    window.delDiary = (key, idx)=>{
+      if(!confirm('Hapus rekaman cerita curhatan ini dari database?')) return;
+      const arr = load(key, []); arr.splice(idx, 1); save(key, arr); toast('Cerita dihapus'); renderDiary();
+    };
 
-    function hookDelegation(){
-      document.getElementById('listAfirmasi').addEventListener('click', (e)=>{
-        const btn = e.target.closest('button');
-        if(!btn) return;
-        const act = btn.dataset.act;
-        const idx = Number(btn.dataset.idx);
-        const arr = load(KEY_A, DEFAULT_A);
-        if(act==='edit'){
-          const current = arr[idx] ?? '';
-          setModal('Edit Afirmasi', `
-            <div>
-              <label style="margin-top:0">Teks Afirmasi</label>
-              <textarea id="afTxt" style="min-height:140px">${escapeHtml(current)}</textarea>
-              <div class="btn-row">
-                <button class="btn-primary" id="afSave">Simpan</button>
-                <button class="btn-ghost" id="afCancel">Batal</button>
-              </div>
-            </div>
-          `);
-          document.getElementById('afTxt').focus();
-          document.getElementById('afSave').onclick = ()=>{
-            const v = document.getElementById('afTxt').value.trim();
-            if(!v){ toast('Afirmasi tidak boleh kosong', 'bad'); return; }
-            arr[idx]=v;
-            save(KEY_A, arr);
-            closeModal();
-            toast('Afirmasi diperbarui');
-            renderAll();
-          }
-          document.getElementById('afCancel').onclick = closeModal;
-        }
-        if(act==='del'){
-          arr.splice(idx,1);
-          save(KEY_A, arr);
-          toast('Afirmasi dihapus');
-          renderAll();
-        }
-      });
+    function setModal(t, h){ document.getElementById('modalTitle').textContent=t; document.getElementById('modalBody').innerHTML=h; document.getElementById('modalOverlay').classList.remove('hidden'); }
+    function closeModal(){ document.getElementById('modalOverlay').classList.add('hidden'); }
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-      document.getElementById('listBlog').addEventListener('click', (e)=>{
-        const btn = e.target.closest('button');
-        if(!btn) return;
-        const act = btn.dataset.act;
-        const id = btn.dataset.id;
-        const arr = load(KEY_B, DEFAULT_B);
-        const target = arr.find(x=> String(x.id)===String(id));
-        if(!target){ toast('Artikel tidak ditemukan', 'bad'); return; }
-        if(act==='delb'){
-          const next = arr.filter(x=> String(x.id)!==String(id));
-          save(KEY_B, next);
-          toast('Artikel dihapus');
-          renderAll();
-        }
-        if(act==='editb'){
-          setModal('Edit Blog', `
-            <div class="grid">
-              <div>
-                <label>Judul</label>
-                <input id="bJudul" value="${escapeHtml(target.judul||'')}" />
-              </div>
-              <div>
-                <label>Kategori</label>
-                <input id="bCat" value="${escapeHtml(target.kategori||'')}" />
-              </div>
-            </div>
-            <div style="margin-top:1rem">
-              <label>Isi (300–500 kata disarankan)</label>
-              <textarea id="bIsi">${escapeHtml(target.isi||'')}</textarea>
-              <div class="btn-row">
-                <button class="btn-primary" id="bSave">Simpan</button>
-                <button class="btn-ghost" id="bCancel">Batal</button>
-              </div>
-            </div>
-          `);
-          document.getElementById('bJudul').focus();
-          document.getElementById('bSave').onclick = ()=>{
-            const judul = document.getElementById('bJudul').value.trim();
-            const kategori = document.getElementById('bCat').value.trim();
-            const isi = document.getElementById('bIsi').value.trim();
-            if(!judul || !isi){ toast('Judul & isi wajib', 'bad'); return; }
-            target.judul = judul;
-            target.kategori = kategori;
-            target.isi = isi;
-            save(KEY_B, arr);
-            closeModal();
-            toast('Artikel diperbarui');
-            renderAll();
-          }
-          document.getElementById('bCancel').onclick = closeModal;
-        }
-      });
+    document.getElementById('diaryVariantFilter').onchange = renderDiary;
+    document.getElementById('btnModalClose').onclick = closeModal;
 
-      document.getElementById('modalOverlay').addEventListener('click', (e)=>{
-        if(e.target.id==='modalOverlay') closeModal();
-      });
-      document.getElementById('btnModalClose').addEventListener('click', closeModal);
-    }
+    document.getElementById('btnAddAfirmasi').onclick = ()=>{
+      setModal('Tambah Afirmasi', `<textarea id="mdTxt" placeholder="Tulis kutipan pembangun energi positif..."></textarea>
+      <button class="btn-primary" style="margin-top:1rem" onclick="pushAf()">Tambahkan</button>`);
+    };
+    window.pushAf = ()=>{
+      const arr = load(KEY_A, DEFAULT_A); const v = document.getElementById('mdTxt').value.trim();
+      if(!v) return; arr.push(v); save(KEY_A, arr); closeModal(); renderAfirmasi();
+    };
 
-    // Top-level buttons
-    function hookButtons(){
-      document.getElementById('btnAddAfirmasi').onclick = ()=>{
-        setModal('Tambah Afirmasi', `
-          <div>
-            <label>Teks Afirmasi</label>
-            <textarea id="afTxt" style="min-height:160px"></textarea>
-            <div class="btn-row">
-              <button class="btn-primary" id="afSave">Tambah</button>
-              <button class="btn-ghost" id="afCancel">Batal</button>
-            </div>
-          </div>
-        `);
-        document.getElementById('afTxt').focus();
-        document.getElementById('afSave').onclick = ()=>{
-          const arr = load(KEY_A, DEFAULT_A);
-          const v = document.getElementById('afTxt').value.trim();
-          if(!v){ toast('Afirmasi tidak boleh kosong', 'bad'); return; }
-          arr.push(v);
-          save(KEY_A, arr);
-          closeModal();
-          toast('Afirmasi ditambahkan');
-          renderAll();
-        }
-        document.getElementById('afCancel').onclick = closeModal;
-      };
+    document.getElementById('btnAddBlog').onclick = ()=>{
+      setModal('Tulis Artikel Baru', `<label>Judul</label><input id="mdJd"/><br/><br/>
+      <label>Kategori</label><input id="mdKt"/><br/><br/>
+      <label>Isi Edukasi</label><textarea id="mdIsi" style="min-height:150px"></textarea>
+      <button class="btn-primary" style="margin-top:1rem" onclick="pushBl()">Terbitkan</button>`);
+    };
+    window.pushBl = ()=>{
+      const arr = load(KEY_B, DEFAULT_B);
+      const j=document.getElementById('mdJd').value.trim(); const k=document.getElementById('mdKt').value.trim(); const i=document.getElementById('mdIsi').value.trim();
+      if(!j || !i) return; arr.push({id:'b_'+Date.now(), judul:j, kategori:k, isi:i}); save(KEY_B, arr); closeModal(); renderBlog();
+    };
 
-      document.getElementById('btnClearAfirmasi').onclick = ()=>{
-        if(!confirm('Reset semua afirmasi ke default?')) return;
-        save(KEY_A, DEFAULT_A);
-        toast('Afirmasi direset');
-        renderAll();
-      };
+    document.getElementById('btnExport').onclick = ()=>{
+      const payload = { affirmations: load(KEY_A, DEFAULT_A), blog: load(KEY_B, DEFAULT_B) };
+      document.getElementById('exportBox').value = JSON.stringify(payload, null, 2);
+      navigator.clipboard.writeText(document.getElementById('exportBox').value);
+      toast('Payload disalin!');
+    };
 
-      document.getElementById('btnAddBlog').onclick = ()=>{
-        setModal('Tambah Artikel Blog', `
-          <div class="grid">
-            <div>
-              <label>Judul</label>
-              <input id="bJudul" placeholder="Judul artikel"/>
-            </div>
-            <div>
-              <label>Kategori</label>
-              <input id="bCat" placeholder="Mis. Skripsi"/>
-            </div>
-          </div>
-          <div style="margin-top:1rem">
-            <label>Isi</label>
-            <textarea id="bIsi" placeholder="Isi artikel..." style="min-height:240px"></textarea>
-            <div class="btn-row">
-              <button class="btn-primary" id="bSave">Tambah</button>
-              <button class="btn-ghost" id="bCancel">Batal</button>
-            </div>
-          </div>
-        `);
-        document.getElementById('bJudul').focus();
-        document.getElementById('bSave').onclick = ()=>{
-          const arr = load(KEY_B, DEFAULT_B);
-          const judul = document.getElementById('bJudul').value.trim();
-          const kategori = document.getElementById('bCat').value.trim();
-          const isi = document.getElementById('bIsi').value.trim();
-          if(!judul || !isi){ toast('Judul & isi wajib', 'bad'); return; }
-          arr.push({ id: crypto.randomUUID(), judul, kategori, isi });
-          save(KEY_B, arr);
-          closeModal();
-          toast('Artikel ditambahkan');
-          renderAll();
-        };
-        document.getElementById('bCancel').onclick = closeModal;
-      };
-
-      document.getElementById('btnClearBlog').onclick = ()=>{
-        if(!confirm('Reset semua blog ke default?')) return;
-        save(KEY_B, DEFAULT_B);
-        toast('Blog direset');
-        renderAll();
-      };
-
-      document.getElementById('btnClearNotes').onclick = ()=>{
-        if(!confirm('Reset semua pesan keluh kesah?')) return;
-        save(KEY_N, []);
-        toast('Pesan direset');
-        renderAll();
-      };
-
-      document.getElementById('btnExport').onclick = async ()=>{
-        const payload = {
-          exportedAt: new Date().toISOString(),
-          affirmations: load(KEY_A, DEFAULT_A),
-          blog: load(KEY_B, DEFAULT_B),
-          diary: load(KEY_D, []),
-          notes: load(KEY_N, [])
-        };
-        const txt = JSON.stringify(payload, null, 2);
-        document.getElementById('exportBox').value = txt;
-        try{
-          await navigator.clipboard.writeText(txt);
-          toast('JSON disalin ke clipboard');
-        }catch{
-          toast('Gagal copy otomatis (izinkan clipboard).', 'bad');
-        }
-      };
-    }
-
-    // Auth
-    function initAuth(){
-      ensureDefaults();
-      const pwEl = document.getElementById('pw');
-      const errEl = document.getElementById('authErr');
-
-      document.getElementById('btnLogin').onclick = ()=>{
-        const v = (pwEl.value||'').trim();
-        if(v !== 'ecoscentadmin2025'){
-          errEl.style.display = 'block';
-          toast('Password salah', 'bad');
-          return;
-        }
-        errEl.style.display = 'none';
+    document.getElementById('btnLogin').onclick = ()=>{
+      if(document.getElementById('pw').value === 'iniadminecoscent789'){
         document.getElementById('authCard').classList.add('hidden');
         document.getElementById('adminRoot').classList.remove('hidden');
-        renderAll();
-        hookButtons();
-        hookDelegation();
-        toast('Login berhasil');
-      };
-
-      pwEl.addEventListener('keydown', (e)=>{
-        if(e.key==='Enter') document.getElementById('btnLogin').click();
-      });
-    }
-
-    initAuth();
+        renderAfirmasi(); renderBlog(); renderDiary();
+      } else { document.getElementById('authErr').style.display='block'; }
+    };
   </script>
 </body>
 </html>
-
