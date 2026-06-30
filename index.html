@@ -101,9 +101,16 @@
     letter-spacing: 0.1em; text-transform: uppercase;
     border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
     font-weight: 500; text-decoration: none; display: inline-block;
-    transition: background 0.25s, transform 0.2s;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s, filter 0.25s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
   }
-  .btn-primary:hover { background: var(--sage); transform: translateY(-1px); }
+  .btn-primary:hover {
+    background: var(--sage);
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 2px rgba(212,175,122,0.15), 0 0 28px rgba(212,175,122,0.35), 0 10px 35px rgba(0,0,0,0.22);
+    filter: brightness(1.03);
+  }
+
   .btn-outline {
     background: transparent; color: var(--deep);
     padding: 0.9rem 2rem; font-size: 0.82rem;
@@ -193,6 +200,7 @@
 
   /* ─── STRIP: BK TAGLINE ─── */
   .bk-strip {
+
     background: var(--sage);
     padding: 1rem 3rem;
     display: flex; align-items: center; justify-content: center; gap: 3rem;
@@ -205,8 +213,156 @@
   }
   .bk-strip-item::before { content: '⟡'; color: var(--jasmine); }
 
+  /* ─── PILIH AROMA — Interactive Scent Selector ─── */
+#pilih-aromamu { background: var(--cream); padding-top: 4.5rem; display:none; }
+  .scent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .scent-card {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--mist);
+    border-radius: 14px;
+    padding: 1.5rem 1.4rem 1.6rem;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    min-height: 320px;
+  }
+  .scent-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 22px 60px rgba(44,59,45,0.10);
+    border-color: var(--sage);
+  }
+  .scent-card::before {
+    content: '';
+    position: absolute;
+    inset: -40% -30% auto -30%;
+    height: 160px;
+    background: var(--aura);
+    opacity: 0;
+    filter: blur(18px);
+    transform: scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+  }
+  .scent-card:hover::before,
+  .scent-card[data-active="true"]::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .scent-card[data-active="true"] {
+    border-color: rgba(0,0,0,0);
+    box-shadow: 0 0 0 2px rgba(122,140,114,0.18), 0 26px 70px rgba(44,59,45,0.14);
+    transform: translateY(-6px) scale(1.02);
+  }
+  .scent-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .scent-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border: 1px solid var(--mist);
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(247,242,234,0.6);
+    white-space: nowrap;
+  }
+  .scent-illu {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(191,201,186,0.35);
+  }
+  .scent-illu svg { width: 46px; height: 46px; }
+  .scent-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--deep);
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .scent-tagline {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--aura-ink);
+    margin-bottom: 0.9rem;
+  }
+  .scent-feel {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #4a5e4b;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+  .scent-moods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .mood-pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(191,201,186,0.65);
+    background: rgba(247,242,234,0.7);
+    color: var(--deep);
+  }
+  .scent-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--mist);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .scent-cta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .scent-check {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--mist);
+    color: var(--sage);
+    background: rgba(247,242,234,0.5);
+  }
+  .scent-card[data-active="true"] .scent-check {
+    border-color: rgba(0,0,0,0);
+    background: var(--aura);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.5) inset;
+    color: var(--ink);
+  }
+
   /* ─── SECTION COMMON ─── */
   section { padding: 6rem 5rem; }
+
   .section-eyebrow {
     font-family: 'Space Mono', monospace;
     font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
@@ -691,21 +847,20 @@
 <section id="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Bimbingan &amp; Konseling × Aromaterapi</p>
-    <h1 class="hero-title">
-      Aroma yang<br>
-      <em>Menyembuhkan,</em><br>
-      BK yang<br>
-      Menguatkan
-    </h1>
+    <h1 class="hero-title">Satu Hirupan. Satu Kelegaan.</h1>
     <p class="hero-desc">
-      <strong>ECOSCENT THERAPY</strong> adalah lilin aromaterapi berbasis riset Bimbingan dan Konseling (BK) — dirancang khusus untuk mendukung kesehatan mental mahasiswa dari semua jurusan melalui wewangian alami pilihan konselor.
+      Mahasiswa kadang baik-baik saja di luar—tapi di dalam, kepala nggak berhenti: deadline numpuk, tugas bertumpuk, cemas sebelum ujian, dan sulit fokus sampai malam.
+      <strong>ECOSCENT THERAPY</strong> hadir sebagai ritual non-verbal berbasis BK: kamu menghirup pelan, menenangkan tubuh, lalu kembali ke langkah yang bisa kamu jalani hari ini.
     </p>
-    <div class="hero-actions">
-      <a href="#produk" class="btn-primary">Jelajahi Produk</a>
+  <div class="hero-actions">
+      <a href="#produk" class="btn-primary">Pilih Aromamu</a>
       <a href="#konsultasi" class="btn-outline">Konsultasi BK Gratis</a>
     </div>
+
   </div>
+
   <div class="hero-right">
+
     <div class="candle-scene">
       <div class="smoke-particle"></div>
       <div class="smoke-particle"></div>
@@ -735,6 +890,7 @@
 </div>
 
 <!-- BK CONNECTION -->
+
 <section id="bk-connection">
   <div class="bk-text">
     <p class="section-eyebrow">Landasan Ilmiah</p>
@@ -788,69 +944,81 @@
 <section id="produk">
   <p class="section-eyebrow">Koleksi Varian</p>
   <h2 class="section-title">Tiga Pilar <em>Aroma</em><br>untuk Jiwa Mahasiswa</h2>
-  <div class="produk-grid">
-
-    <!-- CINNAMON + ROSEMARY -->
-    <div class="produk-card card-cinnamon">
+  <div class="produk-grid" aria-label="Pilih Varian Mood">
+    <!-- CINNAMON ROSEMARY / Fokus & Tegas -->
+    <div class="produk-card card-cinnamon" data-variant="cinnamon" role="group" tabindex="0" aria-label="Varian Cinnamon">
       <div class="produk-icon">🌿</div>
-      <span class="produk-bk-tag">BK Pribadi · BK Karier</span>
-      <h3 class="produk-name">Cinnamon Rosemary</h3>
+      <span class="produk-bk-tag">Mood: Fokus</span>
+      <h3 class="produk-name">Cinnamon</h3>
       <p class="produk-subtitle">Focus · Clarity · Courage</p>
-      <p class="produk-desc">Perpaduan kayu manis hangat dan rosmeri segar menciptakan atmosfer yang mendorong ketegasan dan kejelasan pikiran. Sempurna untuk sesi eksplorasi diri dan pengambilan keputusan karier.</p>
-      <div class="produk-manfaat">
-        <p class="produk-manfaat-title">Manfaat BK:</p>
+      <p class="produk-desc">Saat deadline numpuk, aroma ini bantu kamu kembali ke “mulai” tanpa tenggelam panik.</p>
+      <div class="produk-pilih-wrap">
+        <a href="#" class="btn-primary produk-pilih" data-variant="cinnamon" aria-label="Pilih Cinnamon">Pilih & Buka Ruang Cerita</a>
+      </div>
+      <div class="produk-manfaat produk-manfaat-no-border">
+
+
+        <p class="produk-manfaat-title">Dipilih untuk:</p>
         <ul>
-          <li>Meningkatkan konsentrasi saat belajar &amp; ujian</li>
-          <li>Mendukung eksplorasi identitas diri (BK Pribadi)</li>
-          <li>Membantu mahasiswa mengatasi prokrastinasi</li>
-          <li>Cocok untuk sesi konseling karier &amp; tes minat bakat</li>
-          <li>Menstabilkan emosi saat pengambilan keputusan</li>
+          <li>Overthinking &amp; kepala berputar</li>
+          <li>Butuh konsentrasi saat belajar/ujian</li>
+          <li>Berani mengambil keputusan kecil dulu</li>
         </ul>
       </div>
-      <p class="produk-harga">Rp 45.000 <small>/ 100gr</small></p>
     </div>
 
-    <!-- JASMINE -->
-    <div class="produk-card card-jasmine">
+    <!-- JASMINE / Calm & Terhubung -->
+    <div class="produk-card card-jasmine" data-variant="jasmine" role="group" tabindex="0" aria-label="Varian Jasmine">
       <div class="produk-icon">🌸</div>
-      <span class="produk-bk-tag">BK Sosial · BK Pribadi</span>
-      <h3 class="produk-name">Pure Jasmine</h3>
+      <span class="produk-bk-tag">Mood: Tenang</span>
+      <h3 class="produk-name">Jasmine</h3>
       <p class="produk-subtitle">Calm · Connection · Openness</p>
-      <p class="produk-desc">Jasmine telah terbukti secara ilmiah menurunkan kortisol dan meningkatkan rasa keterhubungan sosial. Ideal untuk mahasiswa yang menghadapi kecemasan sosial atau kesulitan membuka diri.</p>
-      <div class="produk-manfaat">
-        <p class="produk-manfaat-title">Manfaat BK:</p>
+      <p class="produk-desc">Untuk momen cemas sebelum bicara—agar kamu bisa bernapas pelan dan membuka ruang cerita.</p>
+      <div class="produk-pilih-wrap">
+        <a href="#" class="btn-primary produk-pilih" data-variant="jasmine" aria-label="Pilih Jasmine">Pilih & Buka Ruang Cerita</a>
+      </div>
+      <div class="produk-manfaat produk-manfaat-no-border">
+
+        <p class="produk-manfaat-title">Dipilih untuk:</p>
         <ul>
-          <li>Menurunkan kecemasan sosial pada mahasiswa introvert</li>
-          <li>Meningkatkan keterbukaan diri dalam sesi konseling</li>
-          <li>Membantu adaptasi mahasiswa baru (ospek, lingkungan baru)</li>
-          <li>Mendukung dinamika kelompok dalam bimbingan klasikal</li>
-          <li>Meredakan gejala burnout akademik ringan</li>
+          <li>Kecemasan presentasi &amp; situasi sosial</li>
+          <li>Butuh rasa aman untuk berbagi</li>
+          <li>Menyusun ulang energi emosional</li>
         </ul>
       </div>
-      <p class="produk-harga">Rp 45.000 <small>/ 100gr</small></p>
     </div>
 
-    <!-- BUNDLE BK -->
-    <div class="produk-card card-rosemary">
-      <div class="produk-icon">✦</div>
-      <span class="produk-bk-tag">Paket Konselor</span>
-      <h3 class="produk-name">BK Therapy Bundle</h3>
-      <p class="produk-subtitle">Complete · Professional · Gift-Ready</p>
-      <p class="produk-desc">Paket lengkap 3 varian (Cinnamon Rosemary + Pure Jasmine + Exclusive blend) dikemas dalam kotak souvenir BK eksklusif. Cocok untuk konselor, mahasiswa BK, hingga hadiah wisuda.</p>
-      <div class="produk-manfaat">
-        <p class="produk-manfaat-title">Isi Bundle:</p>
+    <!-- COFFEE / Semangat Pagi -->
+    <div class="produk-card card-rosemary" data-variant="coffee" role="group" tabindex="0" aria-label="Varian Coffee">
+      <div class="produk-icon">☕</div>
+      <span class="produk-bk-tag">Mood: Semangat Pagi</span>
+      <h3 class="produk-name">Coffee</h3>
+      <p class="produk-subtitle">Bright · Steady · Ready</p>
+      <p class="produk-desc">Untuk memulai hari dengan lebih ringan: fokus ke langkah berikutnya, bukan beban yang menumpuk.</p>
+      <div class="produk-pilih-wrap">
+        <a href="#" class="btn-primary produk-pilih" data-variant="coffee" aria-label="Pilih Coffee">Pilih & Buka Ruang Cerita</a>
+      </div>
+      <div class="produk-manfaat produk-manfaat-no-border">
+
+        <p class="produk-manfaat-title">Dipilih untuk:</p>
         <ul>
-          <li>3 lilin aromaterapi varian pilihan (@ 80gr)</li>
-          <li>1 kartu panduan penggunaan berbasis BK</li>
-          <li>1 mini jurnal refleksi diri (8 halaman)</li>
-          <li>1 QR code akses video teknik relaksasi BK</li>
-          <li>Kemasan souvenir siap hadir eksklusif</li>
+          <li>Motivasi belajar &amp; anti-rasa malas</li>
+          <li>Reset energi setelah tidur tak nyenyak</li>
+          <li>Semangat “mulai lagi”</li>
         </ul>
       </div>
-      <p class="produk-harga">Rp 120.000 <small>/ bundle 3 pcs</small></p>
     </div>
   </div>
 </section>
+
+<!-- DIARY SCENT — Ruang Cerita (dipindahkan ke halaman varian: cinnamon/jasmine/coffee) -->
+<!-- <section id="diary-scent"></section> -->
+
+<!-- MUSIK RELAKSASI — Piano Lounge (dipindahkan ke halaman varian: cinnamon/jasmine/coffee) -->
+<!-- <section id="piano-lounge"></section> -->
+
+
+
 
 <!-- SOUVENIR BK -->
 <section id="souvenir">
@@ -1250,12 +1418,96 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.produk-card, .layanan-card, .jcard, .testi-card, .souvenir-item, .bk-pillar, .artikel-card').forEach(el => {
+  document.querySelectorAll('.produk-card, .layanan-card, .jcard, .testi-card, .souvenir-item, .bk-pillar, .artikel-card, .scent-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(el);
   });
+
+  // Interactive Scent Selector
+
+  const scentCards = Array.from(document.querySelectorAll('.scent-card'));
+  const proceedBtn = document.getElementById('scentProceed');
+
+  // Variant selector (mood-first)
+  const variantCards = Array.from(document.querySelectorAll('.produk-card[data-variant]'));
+  const diaryTitle = document.getElementById('diary-scent-title');
+  const diaryMoodLabel = document.getElementById('diary-mood-label');
+  const diaryBkLabel = document.getElementById('diary-bk-label');
+  const pianoCurrent = document.getElementById('piano-current');
+  const pianoIframe = document.getElementById('piano-iframe');
+
+  const BKS = {
+    cinnamon: { mood: 'Fokus', label: 'Focus Piano (soft tempo)', iframe: 'https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0&controls=1' },
+    jasmine:  { mood: 'Tenang', label: 'Calm Piano (slow breath)', iframe: 'https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0&controls=1' },
+    coffee:   { mood: 'Semangat Pagi', label: 'Morning Piano (steady)', iframe: 'https://www.youtube.com/embed/5qap5aO4i9A?autoplay=0&controls=1' }
+  };
+
+  function applyVariant(variant){
+    if(!variant) return;
+    const data = BKS[variant] || BKS.cinnamon;
+
+    try{
+      localStorage.setItem('ecoscent_selected_scent', variant);
+    }catch{}
+
+    if(diaryTitle) diaryTitle.textContent = data.mood;
+    if(diaryMoodLabel) diaryMoodLabel.textContent = data.mood;
+    if(diaryBkLabel) diaryBkLabel.textContent = data.label;
+
+    if(pianoCurrent) pianoCurrent.textContent = data.mood;
+    if(pianoIframe && data.iframe){
+      // replace src to ensure change is applied
+      pianoIframe.src = data.iframe;
+    }
+
+    const wallEmpty = document.getElementById('diaryEmpty');
+    if(wallEmpty) wallEmpty.style.display = 'none';
+  }
+
+  function pickVariant(v){
+    // Persist selection (supaya kalau ada restore di halaman baru, tetap konsisten)
+    applyVariant(v);
+    // Redirect ke halaman baru sesuai varian
+    // cinnamon -> cinnamon.html, jasmine -> jasmine.html, coffee -> coffee.html
+    window.location.href = v + '.html';
+  }
+
+  variantCards.forEach(card => {
+    function pick(){
+      const v = card.getAttribute('data-variant');
+      pickVariant(v);
+    }
+
+    // Jangan jadikan seluruh card sebagai klik (biar jelas pakai tombol)
+    // card.addEventListener('click', pick);
+
+    card.addEventListener('keydown', (e)=>{
+      if(e.key==='Enter' || e.key===' '){
+        e.preventDefault();
+        pick();
+      }
+    });
+
+    const btn = card.querySelector('.produk-pilih');
+    if(btn){
+      btn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        e.stopPropagation();
+        pickVariant(btn.getAttribute('data-variant'));
+      });
+    }
+  });
+
+  // Init diary & music from saved variant
+
+  // Init diary & music from saved variant
+  try{
+    const saved = localStorage.getItem('ecoscent_selected_scent');
+    if(saved) applyVariant(saved);
+  }catch{}
+
 </script>
 </body>
 </html>

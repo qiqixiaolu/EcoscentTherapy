@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ruang Cerita — Coffee</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap');
+
+    :root{
+      --cream:#F7F2EA; --sage:#7A8C72; --deep:#2C3B2D; --jasmine:#D4AF7A; --cinnamon:#A0522D;
+      --mist:#BFC9BA; --ink:#1C2419; --white:#FDFAF5;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1.2rem 3rem;
+      background:rgba(247,242,234,.92);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--mist);
+    }
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;letter-spacing:.04em;color:var(--deep);text-decoration:none}
+    .nav-logo span{color:var(--sage)}
+    .nav-links{display:flex;gap:2.2rem;list-style:none}
+    .nav-links a{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--deep);text-decoration:none;font-weight:500;transition:color .2s}
+    .nav-links a:hover{color:var(--sage)}
+    .nav-cta{background:var(--deep);color:var(--cream) !important;padding:.5rem 1.2rem;border-radius:2px;text-decoration:none}
+    .nav-cta:hover{background:var(--sage);color:var(--cream) !important}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 5rem}
+    #diary-scent{
+      background:var(--deep);color:var(--white);
+      padding:7rem 0 4rem;
+      min-height:100vh;
+    }
+    #diary-scent .head{margin-bottom:1.2rem}
+    .section-eyebrow{
+      font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+      color:var(--jasmine);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem
+    }
+    .section-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--jasmine)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1.2rem;color:var(--white)}
+    .section-title em{font-style:italic;color:var(--jasmine)}
+    .diary-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:start;margin-top:2rem}
+    label.form-label{
+      font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.75);
+      display:block;font-family:'Space Mono',monospace;margin-bottom:.35rem;
+    }
+    .form-input{
+      width:100%;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.25);
+      padding:.9rem 1rem;
+      color:var(--white);
+      font-size:.88rem;
+      outline:none;
+      border-radius:10px;
+      font-family:'DM Sans',sans-serif;
+    }
+    .form-input::placeholder{color:rgba(255,255,255,.55)}
+    textarea.form-input{resize:vertical;min-height:120px}
+    .pill{
+      display:inline-flex;align-items:center;gap:.45rem;
+      border:1px solid rgba(212,175,122,.35);
+      padding:.35rem .6rem;border-radius:999px;
+      color:rgba(255,255,255,.85);
+      background:rgba(255,255,255,.04);
+      font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap
+    }
+    .btn-submit{
+      background:var(--white);color:var(--deep);
+      padding:1rem 2rem;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+      border:none;cursor:pointer;font-weight:600;margin-top:.6rem;border-radius:10px;
+      width:100%; transition: background .25s, transform .2s;
+    }
+    .btn-submit:hover{background:var(--cream);transform:translateY(-1px)}
+    .btn-return{
+      display:inline-block;margin-top:1.2rem;
+      background:transparent;border:1px solid rgba(255,255,255,.22);
+      color:rgba(255,255,255,.85);
+      padding:.75rem 1rem;border-radius:10px;
+      text-decoration:none;font-family:'Space Mono',monospace;
+      font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+    }
+    #piano-lounge{
+      background:var(--cream);
+      padding:5rem 0 4rem;
+    }
+    #piano-lounge .title{color:var(--deep)}
+    #piano-lounge .section-eyebrow{color:var(--sage)}
+    #piano-lounge .section-eyebrow::before{background:var(--sage)}
+    .frame{
+      background:var(--deep);
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.2);
+      margin-top:1.4rem;
+    }
+    .frame .top{
+      padding:1.1rem 1.3rem;
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .mono{font-family:'Space Mono',monospace}
+    .small{font-size:.82rem;color:rgba(255,255,255,.7);font-weight:300}
+    #diaryWall{display:flex;flex-direction:column;gap:.9rem;margin-top:1rem}
+    .note{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:1rem 1.1rem;border-radius:14px}
+    .note small{color:rgba(255,255,255,.75);display:block;margin-bottom:.25rem;line-height:1.4}
+    .note p{color:rgba(255,255,255,.92);line-height:1.7;font-weight:300;white-space:pre-wrap}
+    .btn-clear{
+      margin-top:1rem;
+      background:transparent;border:1px solid rgba(255,255,255,.22);
+      color:rgba(255,255,255,.85);padding:.75rem 1rem;border-radius:10px;
+      font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+      cursor:pointer;
+    }
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem}
+      .nav-links{display:none}
+      .wrap{padding:0 1.5rem}
+      .diary-grid{grid-template-columns:1fr}
+      #diary-scent{padding-top:7rem}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">ECOSCENT<span>THERAPY</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#produk">Produk</a></li>
+      <li><a href="index.html#konsultasi" class="nav-cta">Konsultasi</a></li>
+    </ul>
+  </nav>
+
+  <section id="diary-scent">
+    <div class="wrap">
+      <p class="section-eyebrow">Ruang Cerita</p>
+      <h2 class="section-title">DIARY SCENT<br><em id="diary-scent-title">Coffee</em></h2>
+
+      <div class="diary-grid">
+        <div>
+          <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1rem">
+            <span class="pill">Mood: <strong id="diary-mood-label">Semangat Pagi</strong></span>
+            <span class="pill">Backsound: <strong id="diary-bk-label">Semangat Pagi Piano (uplifting)</strong></span>
+          </div>
+
+          <label class="form-label">Nama</label>
+          <input id="diaryNama" class="form-input" placeholder="Opsional"/>
+
+          <label class="form-label" style="margin-top:.9rem;">Semester / Prodi</label>
+          <input id="diaryKampus" class="form-input" placeholder="Opsional"/>
+
+          <label class="form-label" style="margin-top:.9rem;">Mood jujur (satu kalimat)</label>
+          <textarea id="diaryCerita" class="form-input" placeholder="Contoh: Hari ini aku mau mulai lagi dari napas pertama..."></textarea>
+
+          <button class="btn-submit" id="diarySave">Simpan ke Diary Wall →</button>
+          <p class="small" style="margin-top:.6rem;">Tersimpan di localStorage. Data tidak dikirim ke server.</p>
+
+          <a class="btn-return" href="index.html#produk">Kembali ke Koleksi Varian</a>
+        </div>
+
+        <div>
+          <div class="mono" style="font-size:.78rem;color:rgba(255,255,255,.85);letter-spacing:.08em;">Diary Wall</div>
+          <div id="diaryWallCount" class="small" style="margin-top:.35rem;font-size:.78rem;color:rgba(255,255,255,.75);letter-spacing:.08em;"></div>
+
+          <div id="diaryWall"></div>
+          <div id="diaryEmpty" class="small" style="margin-top:1rem;display:none;">Belum ada catatan untuk mood ini.</div>
+
+          <button id="diaryClear" class="btn-clear" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    const VARIANT = 'coffee';
+    const KEY = 'ecoscent_diary_' + VARIANT;
+
+    const diaryNama = document.getElementById('diaryNama');
+    const diaryKampus = document.getElementById('diaryKampus');
+    const diaryCerita = document.getElementById('diaryCerita');
+
+    const diaryWall = document.getElementById('diaryWall');
+    const diaryWallCount = document.getElementById('diaryWallCount');
+    const diaryEmpty = document.getElementById('diaryEmpty');
+
+    const diarySave = document.getElementById('diarySave');
+    const diaryClear = document.getElementById('diaryClear');
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'<','>':'>','"':'"','\'':"&#39;"}[c]));
+    }
+
+    function loadNotes(){
+      try{
+        const raw = localStorage.getItem(KEY);
+        const arr = raw ? JSON.parse(raw) : [];
+        return Array.isArray(arr) ? arr : [];
+      }catch{ return []; }
+    }
+
+    function saveNotes(arr){
+      localStorage.setItem(KEY, JSON.stringify(arr));
+    }
+
+    function render(){
+      const notes = loadNotes();
+      diaryWall.innerHTML = '';
+      diaryWallCount.textContent = 'Entries: ' + notes.length;
+
+      if(!notes.length){
+        diaryEmpty.style.display = 'block';
+        return;
+      }
+      diaryEmpty.style.display = 'none';
+
+      notes.slice().reverse().slice(0,60).forEach(n => {
+        const el = document.createElement('div');
+        el.className = 'note';
+        const who = (n.nama || 'Anonim').toString();
+        const camp = (n.kampus || '-').toString();
+        const when = n.tanggal ? new Date(n.tanggal).toLocaleString('id-ID') : '';
+        el.innerHTML = '<small>' + escapeHtml(who) + ' · ' + escapeHtml(camp) + (when ? ' · ' + escapeHtml(when) : '') + '</small>' +
+                       '<p>' + escapeHtml(n.cerita || '') + '</p>';
+        diaryWall.appendChild(el);
+      });
+    }
+
+    diarySave.addEventListener('click', () => {
+      const cerita = (diaryCerita.value || '').trim();
+      if(!cerita){
+        diaryCerita.focus();
+        return;
+      }
+      const nama = (diaryNama.value || '').trim();
+      const kampus = (diaryKampus.value || '').trim();
+
+      const notes = loadNotes();
+      notes.push({ nama, kampus, cerita, tanggal: new Date().toISOString() });
+      saveNotes(notes);
+
+      diaryCerita.value = '';
+      render();
+    });
+
+    diaryClear.addEventListener('click', () => {
+      if(!confirm('Reset diary wall untuk mood ini?')) return;
+      saveNotes([]);
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
+
