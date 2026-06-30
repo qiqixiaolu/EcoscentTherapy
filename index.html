@@ -65,6 +65,7 @@
     grid-template-columns: 1fr 1fr;
     padding-top: 70px;
     overflow: hidden;
+    border-bottom: 1px solid var(--mist);
   }
   .hero-left {
     display: flex; flex-direction: column; justify-content: center;
@@ -171,8 +172,8 @@
     100%{ transform: translateX(-50%) scaleX(0.88) scaleY(1.05) rotate(1deg); opacity: 1; }
   }
   @keyframes glow-pulse {
-    0%  { opacity: 0.6; transform: translateX(-50%) scale(1); }
-    100%{ opacity: 1; transform: translateX(-50%) scale(1.2); }
+    0%  { opacity: 0.6; transform: translateX(0) scale(1); }
+    100%{ opacity: 1; transform: translateX(0) scale(1.2); }
   }
   .smoke-particle {
     position: absolute; width: 4px; height: 4px; border-radius: 50%;
@@ -200,11 +201,11 @@
 
   /* ─── STRIP: BK TAGLINE ─── */
   .bk-strip {
-
     background: var(--sage);
     padding: 1rem 3rem;
     display: flex; align-items: center; justify-content: center; gap: 3rem;
     flex-wrap: wrap;
+    border-bottom: 1px solid rgba(44, 59, 45, 0.2);
   }
   .bk-strip-item {
     font-family: 'Space Mono', monospace;
@@ -214,7 +215,7 @@
   .bk-strip-item::before { content: '⟡'; color: var(--jasmine); }
 
   /* ─── PILIH AROMA — Interactive Scent Selector ─── */
-#pilih-aromamu { background: var(--cream); padding-top: 4.5rem; display:none; }
+  #pilih-aromamu { background: var(--cream); padding-top: 4.5rem; display:none; }
   .scent-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -382,6 +383,7 @@
   #bk-connection {
     background: var(--white);
     display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+    border-bottom: 1px solid var(--mist);
   }
   .bk-text p {
     font-size: 1rem; line-height: 1.8; color: #4a5e4b; font-weight: 300;
@@ -422,7 +424,10 @@
   .bk-stat-label { font-size: 0.72rem; letter-spacing: 0.08em; opacity: 0.85; line-height: 1.4; }
 
   /* ─── PRODUK ─── */
-  #produk { background: var(--cream); }
+  #produk { 
+    background: var(--cream); 
+    border-bottom: 1px solid var(--mist);
+  }
   .produk-grid {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
     margin-top: 3rem;
@@ -431,6 +436,8 @@
     background: var(--white); border: 1px solid var(--mist);
     padding: 2rem; position: relative; overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
   }
   .produk-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(44,59,45,0.12); }
   .produk-card::before {
@@ -448,6 +455,7 @@
     letter-spacing: 0.12em; text-transform: uppercase;
     padding: 0.25rem 0.7rem; border: 1px solid var(--mist);
     border-radius: 2px; margin-bottom: 0.8rem;
+    align-self: flex-start;
   }
   .produk-name {
     font-family: 'Cormorant Garamond', serif; font-size: 1.5rem;
@@ -461,7 +469,12 @@
     font-size: 0.88rem; line-height: 1.7; color: #4a5e4b;
     font-weight: 300; margin-bottom: 1.2rem;
   }
-  .produk-manfaat { border-top: 1px solid var(--mist); padding-top: 1rem; }
+  .produk-manfaat { 
+    border-top: 1px solid var(--mist); 
+    padding-top: 1rem; 
+    flex-grow: 1;
+    margin-top: 0.5rem;
+  }
   .produk-manfaat-title {
     font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
     color: var(--sage); font-weight: 500; margin-bottom: 0.6rem;
@@ -473,6 +486,13 @@
     display: flex; align-items: flex-start; gap: 0.5rem;
   }
   .produk-manfaat li::before { content: '→'; color: var(--sage); flex-shrink: 0; }
+  .produk-pilih-wrap {
+    margin-top: 1.5rem;
+  }
+  .produk-pilih-wrap .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
   .produk-harga {
     margin-top: 1.2rem;
     font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
@@ -486,6 +506,7 @@
   #souvenir {
     background: var(--deep); color: var(--white);
     display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   #souvenir .section-eyebrow { color: var(--jasmine); }
   #souvenir .section-eyebrow::before { background: var(--jasmine); }
@@ -543,7 +564,10 @@
   .slp-bk { font-size: 0.7rem; color: var(--cinnamon); margin-top: 0.4rem; }
 
   /* ─── LAYANAN BK ─── */
-  #layanan { background: var(--white); }
+  #layanan { 
+    background: var(--white); 
+    border-bottom: 1px solid var(--mist);
+  }
   .layanan-intro {
     max-width: 600px; margin-bottom: 3rem;
   }
@@ -581,7 +605,10 @@
   .layanan-aroma::before { content: '🕯️'; }
 
   /* ─── JURUSAN ─── */
-  #jurusan { background: var(--cream); }
+  #jurusan { 
+    background: var(--cream); 
+    border-bottom: 1px solid var(--mist);
+  }
   .jurusan-header { max-width: 560px; margin-bottom: 3rem; }
   .jurusan-header p { font-size: 1rem; line-height: 1.8; color: #4a5e4b; font-weight: 300; }
   .jurusan-tabs {
@@ -622,7 +649,10 @@
   .jcard-produk::before { content: '→'; }
 
   /* ─── CARA PESAN ─── */
-  #cara-pesan { background: var(--deep); color: var(--white); }
+  #cara-pesan { 
+    background: var(--deep); color: var(--white); 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
   #cara-pesan .section-eyebrow { color: var(--jasmine); }
   #cara-pesan .section-eyebrow::before { background: var(--jasmine); }
   #cara-pesan .section-title { color: var(--white); }
@@ -652,7 +682,10 @@
   .step p { font-size: 0.78rem; line-height: 1.5; color: var(--mist); }
 
   /* ─── TESTIMONI ─── */
-  #testimoni { background: var(--cream); }
+  #testimoni { 
+    background: var(--cream); 
+    border-bottom: 1px solid var(--mist);
+  }
   .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
   .testi-card {
     background: var(--white); padding: 2rem;
@@ -681,6 +714,7 @@
   #konsultasi {
     background: var(--sage);
     display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   }
   #konsultasi .section-eyebrow { color: var(--cream); }
   #konsultasi .section-eyebrow::before { background: var(--cream); }
@@ -728,7 +762,10 @@
   .konsul-feat p { font-size: 0.82rem; line-height: 1.6; opacity: 0.85; }
 
   /* ─── BLOG / EDUKASI BK ─── */
-  #edukasi { background: var(--white); }
+  #edukasi { 
+    background: var(--white); 
+    border-bottom: 1px solid var(--mist);
+  }
   .edukasi-grid {
     display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem; margin-top: 3rem;
   }
@@ -829,7 +866,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">ECOSCENT<span>THERAPY</span></a>
   <ul class="nav-links">
@@ -843,7 +879,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-left">
     <p class="hero-eyebrow">Bimbingan &amp; Konseling × Aromaterapi</p>
@@ -852,15 +887,13 @@
       Mahasiswa kadang baik-baik saja di luar—tapi di dalam, kepala nggak berhenti: deadline numpuk, tugas bertumpuk, cemas sebelum ujian, dan sulit fokus sampai malam.
       <strong>ECOSCENT THERAPY</strong> hadir sebagai ritual non-verbal berbasis BK: kamu menghirup pelan, menenangkan tubuh, lalu kembali ke langkah yang bisa kamu jalani hari ini.
     </p>
-  <div class="hero-actions">
+    <div class="hero-actions">
       <a href="#produk" class="btn-primary">Pilih Aromamu</a>
       <a href="#konsultasi" class="btn-outline">Konsultasi BK Gratis</a>
     </div>
-
   </div>
 
   <div class="hero-right">
-
     <div class="candle-scene">
       <div class="smoke-particle"></div>
       <div class="smoke-particle"></div>
@@ -879,7 +912,6 @@
   </div>
 </section>
 
-<!-- BK STRIP -->
 <div class="bk-strip">
   <div class="bk-strip-item">Layanan Pribadi</div>
   <div class="bk-strip-item">Layanan Sosial</div>
@@ -888,8 +920,6 @@
   <div class="bk-strip-item">Kesehatan Mental Mahasiswa</div>
   <div class="bk-strip-item">Non-Farmakologi</div>
 </div>
-
-<!-- BK CONNECTION -->
 
 <section id="bk-connection">
   <div class="bk-text">
@@ -940,24 +970,17 @@
   </div>
 </section>
 
-<!-- PRODUK -->
 <section id="produk">
   <p class="section-eyebrow">Koleksi Varian</p>
   <h2 class="section-title">Tiga Pilar <em>Aroma</em><br>untuk Jiwa Mahasiswa</h2>
   <div class="produk-grid" aria-label="Pilih Varian Mood">
-    <!-- CINNAMON ROSEMARY / Fokus & Tegas -->
     <div class="produk-card card-cinnamon" data-variant="cinnamon" role="group" tabindex="0" aria-label="Varian Cinnamon">
       <div class="produk-icon">🌿</div>
       <span class="produk-bk-tag">Mood: Fokus</span>
       <h3 class="produk-name">Cinnamon</h3>
       <p class="produk-subtitle">Focus · Clarity · Courage</p>
       <p class="produk-desc">Saat deadline numpuk, aroma ini bantu kamu kembali ke “mulai” tanpa tenggelam panik.</p>
-      <div class="produk-pilih-wrap">
-        <a href="#" class="btn-primary produk-pilih" data-variant="cinnamon" aria-label="Pilih Cinnamon">Pilih & Buka Ruang Cerita</a>
-      </div>
-      <div class="produk-manfaat produk-manfaat-no-border">
-
-
+      <div class="produk-manfaat">
         <p class="produk-manfaat-title">Dipilih untuk:</p>
         <ul>
           <li>Overthinking &amp; kepala berputar</li>
@@ -965,20 +988,18 @@
           <li>Berani mengambil keputusan kecil dulu</li>
         </ul>
       </div>
+      <div class="produk-pilih-wrap">
+        <a href="#" class="btn-primary produk-pilih" data-variant="cinnamon" aria-label="Pilih Cinnamon">Pilih & Buka Ruang Cerita</a>
+      </div>
     </div>
 
-    <!-- JASMINE / Calm & Terhubung -->
     <div class="produk-card card-jasmine" data-variant="jasmine" role="group" tabindex="0" aria-label="Varian Jasmine">
       <div class="produk-icon">🌸</div>
       <span class="produk-bk-tag">Mood: Tenang</span>
       <h3 class="produk-name">Jasmine</h3>
       <p class="produk-subtitle">Calm · Connection · Openness</p>
       <p class="produk-desc">Untuk momen cemas sebelum bicara—agar kamu bisa bernapas pelan dan membuka ruang cerita.</p>
-      <div class="produk-pilih-wrap">
-        <a href="#" class="btn-primary produk-pilih" data-variant="jasmine" aria-label="Pilih Jasmine">Pilih & Buka Ruang Cerita</a>
-      </div>
-      <div class="produk-manfaat produk-manfaat-no-border">
-
+      <div class="produk-manfaat">
         <p class="produk-manfaat-title">Dipilih untuk:</p>
         <ul>
           <li>Kecemasan presentasi &amp; situasi sosial</li>
@@ -986,20 +1007,18 @@
           <li>Menyusun ulang energi emosional</li>
         </ul>
       </div>
+      <div class="produk-pilih-wrap">
+        <a href="#" class="btn-primary produk-pilih" data-variant="jasmine" aria-label="Pilih Jasmine">Pilih & Buka Ruang Cerita</a>
+      </div>
     </div>
 
-    <!-- COFFEE / Semangat Pagi -->
     <div class="produk-card card-rosemary" data-variant="coffee" role="group" tabindex="0" aria-label="Varian Coffee">
       <div class="produk-icon">☕</div>
       <span class="produk-bk-tag">Mood: Semangat Pagi</span>
       <h3 class="produk-name">Coffee</h3>
       <p class="produk-subtitle">Bright · Steady · Ready</p>
       <p class="produk-desc">Untuk memulai hari dengan lebih ringan: fokus ke langkah berikutnya, bukan beban yang menumpuk.</p>
-      <div class="produk-pilih-wrap">
-        <a href="#" class="btn-primary produk-pilih" data-variant="coffee" aria-label="Pilih Coffee">Pilih & Buka Ruang Cerita</a>
-      </div>
-      <div class="produk-manfaat produk-manfaat-no-border">
-
+      <div class="produk-manfaat">
         <p class="produk-manfaat-title">Dipilih untuk:</p>
         <ul>
           <li>Motivasi belajar &amp; anti-rasa malas</li>
@@ -1007,20 +1026,13 @@
           <li>Semangat “mulai lagi”</li>
         </ul>
       </div>
+      <div class="produk-pilih-wrap">
+        <a href="#" class="btn-primary produk-pilih" data-variant="coffee" aria-label="Pilih Coffee">Pilih & Buka Ruang Cerita</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- DIARY SCENT — Ruang Cerita (dipindahkan ke halaman varian: cinnamon/jasmine/coffee) -->
-<!-- <section id="diary-scent"></section> -->
-
-<!-- MUSIK RELAKSASI — Piano Lounge (dipindahkan ke halaman varian: cinnamon/jasmine/coffee) -->
-<!-- <section id="piano-lounge"></section> -->
-
-
-
-
-<!-- SOUVENIR BK -->
 <section id="souvenir">
   <div>
     <p class="section-eyebrow">Kemasan Eksklusif</p>
@@ -1092,7 +1104,6 @@
   </div>
 </section>
 
-<!-- LAYANAN BK -->
 <section id="layanan">
   <p class="section-eyebrow">Integrasi Layanan</p>
   <h2 class="section-title">Aroma untuk Setiap<br><em>Layanan BK</em></h2>
@@ -1131,7 +1142,6 @@
   </div>
 </section>
 
-<!-- JURUSAN -->
 <section id="jurusan">
   <p class="section-eyebrow">Semua Jurusan</p>
   <h2 class="section-title">BK untuk <em>Semua</em><br>Mahasiswa</h2>
@@ -1178,7 +1188,6 @@
   </div>
 </section>
 
-<!-- CARA PESAN -->
 <section id="cara-pesan">
   <p class="section-eyebrow">Cara Mendapatkan</p>
   <h2 class="section-title" style="color:var(--white);">Lima Langkah <em style="color:var(--jasmine);">Mudah</em></h2>
@@ -1211,7 +1220,6 @@
   </div>
 </section>
 
-<!-- TESTIMONI -->
 <section id="testimoni">
   <p class="section-eyebrow">Cerita Mahasiswa</p>
   <h2 class="section-title">Mereka yang<br><em>Merasakannya</em></h2>
@@ -1252,7 +1260,6 @@
   </div>
 </section>
 
-<!-- KONSULTASI BK -->
 <section id="konsultasi">
   <div>
     <p class="section-eyebrow">Layanan BK Terintegrasi</p>
@@ -1321,7 +1328,6 @@
   </div>
 </section>
 
-<!-- EDUKASI BK -->
 <section id="edukasi">
   <p class="section-eyebrow">Edukasi &amp; Konten</p>
   <h2 class="section-title">Ilmu BK untuk<br><em>Semua</em></h2>
@@ -1353,7 +1359,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div>
@@ -1394,7 +1399,6 @@
   </div>
 </footer>
 
-<!-- FLOATING BK BUTTON -->
 <a href="#konsultasi" class="floating-bk">
   🕯️ Konsultasi BK Gratis
 </a>
@@ -1426,7 +1430,6 @@
   });
 
   // Interactive Scent Selector
-
   const scentCards = Array.from(document.querySelectorAll('.scent-card'));
   const proceedBtn = document.getElementById('scentProceed');
 
@@ -1458,7 +1461,6 @@
 
     if(pianoCurrent) pianoCurrent.textContent = data.mood;
     if(pianoIframe && data.iframe){
-      // replace src to ensure change is applied
       pianoIframe.src = data.iframe;
     }
 
@@ -1467,10 +1469,7 @@
   }
 
   function pickVariant(v){
-    // Persist selection (supaya kalau ada restore di halaman baru, tetap konsisten)
     applyVariant(v);
-    // Redirect ke halaman baru sesuai varian
-    // cinnamon -> cinnamon.html, jasmine -> jasmine.html, coffee -> coffee.html
     window.location.href = v + '.html';
   }
 
@@ -1479,9 +1478,6 @@
       const v = card.getAttribute('data-variant');
       pickVariant(v);
     }
-
-    // Jangan jadikan seluruh card sebagai klik (biar jelas pakai tombol)
-    // card.addEventListener('click', pick);
 
     card.addEventListener('keydown', (e)=>{
       if(e.key==='Enter' || e.key===' '){
@@ -1500,14 +1496,10 @@
     }
   });
 
-  // Init diary & music from saved variant
-
-  // Init diary & music from saved variant
   try{
     const saved = localStorage.getItem('ecoscent_selected_scent');
     if(saved) applyVariant(saved);
   }catch{}
-
 </script>
 </body>
 </html>
