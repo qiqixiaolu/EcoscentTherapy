@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>ECOSCENT THERAPY — Aromaterapi untuk Kesehatan Mental Mahasiswa</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap');
 
   :root {
     --cream:    #F7F2EA;
@@ -998,11 +998,11 @@
       <span class="produk-bk-tag">Mood: Tenang</span>
       <h3 class="produk-name">Jasmine</h3>
       <p class="produk-subtitle">Calm · Connection · Openness</p>
-      <p class="produk-desc">Untuk momen cemas sebelum bicara—agar kamu bisa bernapas pelan dan membuka ruang cerita.</p>
+      <p class="produk-desc">Untuk momen cemas sebelum bicara—agar kamu bisa bernapas pelan and membuka ruang cerita.</p>
       <div class="produk-manfaat">
         <p class="produk-manfaat-title">Dipilih untuk:</p>
         <ul>
-          <li>Kecemasan presentasi &amp; situasi sosial</li>
+          <li>Kecemasan presentasi &amp; situation sosial</li>
           <li>Butuh rasa aman untuk berbagi</li>
           <li>Menyusun ulang energi emosional</li>
         </ul>
@@ -1269,16 +1269,16 @@
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Nama Lengkap</label>
-          <input type="text" class="form-input" placeholder="Nama kamu"/>
+          <input type="text" id="konsulNama" class="form-input" placeholder="Nama kamu"/>
         </div>
         <div class="form-group">
           <label class="form-label">Jurusan / Prodi</label>
-          <input type="text" class="form-input" placeholder="Mis. Teknik Informatika"/>
+          <input type="text" id="konsulProdi" class="form-input" placeholder="Mis. Teknik Informatika"/>
         </div>
       </div>
       <div class="form-group">
         <label class="form-label">Topik Konsultasi</label>
-        <select class="form-input">
+        <select id="konsulTopik" class="form-input">
           <option value="">Pilih bidang layanan BK...</option>
           <option>Pribadi — Regulasi Emosi &amp; Identitas</option>
           <option>Sosial — Relasi &amp; Kecemasan Sosial</option>
@@ -1289,9 +1289,9 @@
       </div>
       <div class="form-group">
         <label class="form-label">Ceritakan singkat situasimu</label>
-        <textarea class="form-input" rows="3" placeholder="Apa yang sedang kamu rasakan? (opsional)" style="resize:vertical;"></textarea>
+        <textarea id="konsulCerita" class="form-input" rows="3" placeholder="Apa yang sedang kamu rasakan?" style="resize:vertical;"></textarea>
       </div>
-      <button class="btn-submit" onclick="alert('Terima kasih! Tim konselor kami akan menghubungi kamu dalam 24 jam.')">Daftar Konsultasi Gratis →</button>
+      <button class="btn-submit" id="btnKonsulSubmit">Daftar Konsultasi Gratis →</button>
     </div>
   </div>
   <div class="konsultasi-right">
@@ -1500,6 +1500,36 @@
     const saved = localStorage.getItem('ecoscent_selected_scent');
     if(saved) applyVariant(saved);
   }catch{}
+
+  // Form Konsultasi Handler ke WhatsApp
+  const btnKonsulSubmit = document.getElementById('btnKonsulSubmit');
+  if (btnKonsulSubmit) {
+    btnKonsulSubmit.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const nama = document.getElementById('konsulNama').value.trim();
+      const prodi = document.getElementById('konsulProdi').value.trim();
+      const topik = document.getElementById('konsulTopik').value.trim();
+      const cerita = document.getElementById('konsulCerita').value.trim();
+
+      // Cek apakah semua input telah terisi
+      if (!nama || !prodi || !topik || !cerita) {
+        alert('Mohon lengkapi semua form input sebelum mendaftar konsultasi!');
+        return;
+      }
+
+      // Template pesan untuk WhatsApp
+      const templatePesan = `Halo EcoScent Therapy,\n\nSaya ingin mendaftar Konsultasi BK Gratis dengan detail berikut:\n\n` +
+                            `- Nama Lengkap: ${nama}\n` +
+                            `- Jurusan / Prodi: ${prodi}\n` +
+                            `- Topik Konsultasi: ${topik}\n` +
+                            `- Situasi / Keluhan saat ini:\n"${cerita}"`;
+
+      // Redirect ke API WhatsApp
+      const whatsappUrl = `https://wa.me/6285168684305?text=${encodeURIComponent(templatePesan)}`;
+      window.open(whatsappUrl, '_blank');
+    });
+  }
 </script>
 </body>
 </html>
