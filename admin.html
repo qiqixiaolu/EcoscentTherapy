@@ -34,27 +34,26 @@
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--mist);
     }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.2rem 2rem; }
-    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 1.2rem 1.5rem; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: .04em; color: var(--deep); }
     .brand span { color: var(--sage); }
     .tag { font-family: 'Space Mono', monospace; font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; color: var(--sage); margin-top: 0.2rem; }
 
     .card { background: var(--white); border: 1px solid var(--mist); border-radius: 4px; box-shadow: 0 10px 30px rgba(44,59,45,0.05); overflow: hidden; margin-bottom: 2rem; }
-    .card-hd { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--mist); display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: rgba(44,59,45,0.02); }
+    .card-hd { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--mist); display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: rgba(44,59,45,0.02); flex-wrap: wrap; }
     .card-hd h2 { font-size: .85rem; font-family: 'Space Mono', monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--deep); }
-    .card-bd { padding: 1.5rem; }
+    .card-bd { padding: 1.5rem 1.2rem; }
 
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    @media(max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-
+    
     label { display: block; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--deep); margin-bottom: .45rem; font-family: 'Space Mono', monospace; font-weight: 500; }
-    input, textarea, select { width: 100%; background: var(--cream); border: 1px solid var(--mist); color: var(--ink); padding: .85rem 1rem; outline: none; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: border-color 0.2s; }
+    input, textarea, select { width: 100%; background: var(--cream); border: 1px solid var(--mist); color: var(--ink); padding: .85rem 1rem; outline: none; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: border-color 0.2s; border-radius: 4px; }
     input:focus, textarea:focus, select:focus { border-color: var(--sage); }
     textarea { min-height: 120px; resize: vertical; }
 
     .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1rem; }
-    button { cursor: pointer; border: none; padding: .8rem 1.5rem; font-size: 0.75rem; font-family: 'Space Mono', monospace; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; display: inline-block; transition: all 0.2s; }
+    button { cursor: pointer; border: none; padding: .8rem 1.5rem; font-size: 0.75rem; font-family: 'Space Mono', monospace; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; display: inline-block; transition: all 0.2s; border-radius: 4px; }
     .btn-primary { background: var(--deep); color: var(--white); }
     .btn-primary:hover { background: var(--sage); }
     .btn-ghost { background: transparent; color: var(--deep); border: 1px solid var(--deep); }
@@ -62,21 +61,27 @@
     .btn-danger { background: transparent; color: var(--bad); border: 1px solid var(--bad); }
     .btn-danger:hover { background: var(--bad); color: var(--white); }
 
-    .pill { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .7rem; border: 1px solid var(--mist); background: var(--cream); color: var(--deep); font-size: .7rem; font-family: 'Space Mono', monospace; }
+    .pill { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .7rem; border: 1px solid var(--mist); background: var(--cream); color: var(--deep); font-size: .7rem; font-family: 'Space Mono', monospace; border-radius: 2px; }
     .pill strong { color: var(--cinnamon); }
 
     .list { display: flex; flex-direction: column; gap: .85rem; }
-    .item { border: 1px solid var(--mist); background: var(--white); padding: 1.1rem; border-radius: 2px; }
-    .item-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; }
+    .item { border: 1px solid var(--mist); background: var(--white); padding: 1.1rem; border-radius: 4px; }
+    .item-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: .6rem; flex-wrap: wrap; }
     .item-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--deep); }
     .item-meta { color: var(--sage); font-size: .75rem; font-family: 'Space Mono', monospace; margin-top: 0.2rem; }
     .item-body { color: var(--ink); font-size: .9rem; line-height: 1.6; white-space: pre-wrap; font-weight: 300; margin-top: 0.5rem; }
 
     .hidden { display: none !important; }
-    .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; z-index: 1000; background: var(--deep); color: var(--white); padding: .85rem 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-left: 4px solid var(--jasmine); }
+    .toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: 2rem; z-index: 1000; background: var(--deep); color: var(--white); padding: .85rem 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border-left: 4px solid var(--jasmine); width: max-content; max-width: 90%; text-align: center; }
 
     #modalOverlay { position: fixed; inset: 0; background: rgba(44,59,45,0.4); backdrop-filter: blur(4px); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-    .export-box { width: 100%; background: var(--cream); border: 1px solid var(--mist); color: var(--ink); font-family: 'Space Mono', monospace; font-size: 0.8rem; padding: .9rem; }
+    .export-box { width: 100%; background: var(--cream); border: 1px solid var(--mist); color: var(--ink); font-family: 'Space Mono', monospace; font-size: 0.8rem; padding: .9rem; border-radius: 4px; }
+
+    @media(max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .topbar { flex-direction: column; align-items: flex-start; }
+      .pill { margin-top: 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -92,8 +97,8 @@
     </div>
   </header>
 
-  <main class="wrap" style="margin-top: 2rem;">
-    <section id="authCard" class="card" style="max-width: 500px; margin: 4rem auto;">
+  <main class="wrap" style="margin-top: 1.5rem;">
+    <section id="authCard" class="card" style="max-width: 500px; margin: 2rem auto;">
       <div class="card-hd">
         <h2>Otentikasi Administrator</h2>
       </div>
@@ -114,7 +119,7 @@
       <div class="grid">
         <div class="card">
           <div class="card-hd">
-            <h2>Koleksi Afirmasi Halaman Utama</h2>
+            <h2>Koleksi Afirmasi</h2>
             <span class="pill">Total: <strong id="countAfirmasi">0</strong></span>
           </div>
           <div class="card-bd">
@@ -128,7 +133,7 @@
 
         <div class="card">
           <div class="card-hd">
-            <h2>Artikel Edukasi Mental Health</h2>
+            <h2>Artikel Edukasi</h2>
             <span class="pill">Artikel: <strong id="countBlog">0</strong></span>
           </div>
           <div class="card-bd">
@@ -165,7 +170,7 @@
           <h2>Ekspor Data Objek Konten (JSON)</h2>
         </div>
         <div class="card-bd">
-          <button class="btn-primary" id="btnExport" style="margin-bottom: 1rem;">Salin Payload JSON</button>
+          <button class="btn-primary" id="btnExport" style="margin-bottom: 1rem; width: 100%;">Salin Payload JSON</button>
           <textarea id="exportBox" class="export-box" rows="5" readonly placeholder="Payload JSON data..."></textarea>
         </div>
       </div>
@@ -212,7 +217,7 @@
       arr.forEach((t, i)=>{
         const d = document.createElement('div'); d.className='item';
         d.innerHTML=`<div class="item-hd"><div><div class="item-title">Kutipan #${i+1}</div></div>
-        <div><button class="btn-ghost" onclick="editAf(${i})" style="padding:.3rem .6rem; font-size:.65rem">Ubah</button>
+        <div class="btn-row" style="margin-top:0;"><button class="btn-ghost" onclick="editAf(${i})" style="padding:.3rem .6rem; font-size:.65rem">Ubah</button>
         <button class="btn-danger" onclick="delAf(${i})" style="padding:.3rem .6rem; font-size:.65rem">Hapus</button></div></div>
         <div class="item-body">${escapeHtml(t)}</div>`;
         c.appendChild(d);
@@ -226,7 +231,7 @@
       arr.forEach((b)=>{
         const d = document.createElement('div'); d.className='item';
         d.innerHTML=`<div class="item-hd"><div><div class="item-title">${escapeHtml(b.judul)}</div>
-        <div class="item-meta">Rubrik: ${escapeHtml(b.kategori)}</div></div><div>
+        <div class="item-meta">Rubrik: ${escapeHtml(b.kategori)}</div></div><div class="btn-row" style="margin-top:0;">
         <button class="btn-ghost" onclick="editBl('${b.id}')" style="padding:.3rem .6rem; font-size:.65rem">Ubah</button>
         <button class="btn-danger" onclick="delBl('${b.id}')" style="padding:.3rem .6rem; font-size:.65rem">Hapus</button></div></div>
         <div class="item-body">${escapeHtml(b.isi)}</div>`;
@@ -252,7 +257,7 @@
         const el = document.createElement('div'); el.className='item';
         el.innerHTML=`<div class="item-hd"><div><div class="item-title" style="font-size:1rem;color:var(--cinnamon)">${escapeHtml(d.nama||'Anonim')}</div>
         <div class="item-meta">${escapeHtml(d.kampus||'')} · ${d.variant}</div></div>
-        <button class="btn-danger" onclick="delDiary('${d.key}', ${d.idx})" style="padding:.3rem .6rem; font-size:.65rem">Hapus</button></div>
+        <button class="btn-danger" onclick="delDiary('${d.key}', ${d.idx})" style="padding:.3rem .6rem; font-size:.65rem; margin-top:0.5rem;">Hapus</button></div>
         <div class="item-body" style="font-style:italic; background:var(--cream); padding:0.6rem; border-left:2px solid var(--sage)">"${escapeHtml(d.cerita)}"</div>`;
         c.appendChild(el);
       });
@@ -261,7 +266,7 @@
     window.editAf = (i)=>{
       const arr = load(KEY_A, DEFAULT_A);
       setModal('Ubah Afirmasi', `<textarea id="mdTxt" style="min-height:100px">${escapeHtml(arr[i])}</textarea>
-      <button class="btn-primary" style="margin-top:1rem" onclick="saveAf(${i})">Simpan</button>`);
+      <button class="btn-primary" style="margin-top:1rem; width:100%;" onclick="saveAf(${i})">Simpan</button>`);
     };
     window.saveAf = (i)=>{
       const arr = load(KEY_A, DEFAULT_A); const v = document.getElementById('mdTxt').value.trim();
@@ -277,7 +282,7 @@
       setModal('Ubah Artikel', `<label>Judul</label><input id="mdJd" value="${escapeHtml(t.judul)}"/><br/><br/>
       <label>Kategori</label><input id="mdKt" value="${escapeHtml(t.kategori)}"/><br/><br/>
       <label>Isi</label><textarea id="mdIsi" style="min-height:150px">${escapeHtml(t.isi)}</textarea>
-      <button class="btn-primary" style="margin-top:1rem" onclick="saveBl('${id}')">Simpan</button>`);
+      <button class="btn-primary" style="margin-top:1rem; width:100%;" onclick="saveBl('${id}')">Simpan</button>`);
     };
     window.saveBl = (id)=>{
       const arr = load(KEY_B, DEFAULT_B); const t = arr.find(x=>x.id===id);
@@ -304,7 +309,7 @@
 
     document.getElementById('btnAddAfirmasi').onclick = ()=>{
       setModal('Tambah Afirmasi', `<textarea id="mdTxt" placeholder="Tulis kutipan pembangun energi positif..."></textarea>
-      <button class="btn-primary" style="margin-top:1rem" onclick="pushAf()">Tambahkan</button>`);
+      <button class="btn-primary" style="margin-top:1rem; width:100%;" onclick="pushAf()">Tambahkan</button>`);
     };
     window.pushAf = ()=>{
       const arr = load(KEY_A, DEFAULT_A); const v = document.getElementById('mdTxt').value.trim();
@@ -315,7 +320,7 @@
       setModal('Tulis Artikel Baru', `<label>Judul</label><input id="mdJd"/><br/><br/>
       <label>Kategori</label><input id="mdKt"/><br/><br/>
       <label>Isi Edukasi</label><textarea id="mdIsi" style="min-height:150px"></textarea>
-      <button class="btn-primary" style="margin-top:1rem" onclick="pushBl()">Terbitkan</button>`);
+      <button class="btn-primary" style="margin-top:1rem; width:100%;" onclick="pushBl()">Terbitkan</button>`);
     };
     window.pushBl = ()=>{
       const arr = load(KEY_B, DEFAULT_B);
