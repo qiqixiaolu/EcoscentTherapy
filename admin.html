@@ -197,8 +197,8 @@
     ];
 
     const DEFAULT_B = [
-      { id: "b1", judul: 'Aromaterapi Menyelamatkan Malam-Malam Overthinking-ku', kategori: 'Self Care', isi: 'Ketika kepala berlari terlalu cepat di malam hari, aroma yang tepat membantu paru-paru mengambil napas lebih dalam dan tenang...' },
-      { id: "b2", judul: 'Skripsi Stuck dan Menghadapi Burnout Akademik', kategori: 'Edukasi', isi: 'Berhenti sejenak bukan berarti gagal. Terkadang, kamu hanya perlu ruang aman untuk mengistirahatkan pikiran yang lelah.' }
+      { id: "b1", judul: 'Aromaterapi Menyelamatkan Malam-Malam Overthinking-ku', kategori: 'Self Care', isi: 'Ketika kepala berlari terlalu cepat di malam hari, aroma yang tepat membantu paru-paru mengambil napas lebih dalam dan tenang. Sistem limbik langsung merespon bau alami untuk menurunkan produksi kortisol Anda.' },
+      { id: "b2", judul: 'Skripsi Stuck dan Menghadapi Burnout Akademik', kategori: 'Edukasi', isi: 'Berhenti sejenak bukan berarti gagal. Terkadang, kamu hanya perlu ruang aman untuk mengistirahatkan pikiran yang lelah. Melalui teknik grounding aroma Cinnamon, konsentrasi belajar Anda bisa bangkit kembali pelan-pelan.' }
     ];
 
     function load(k, fb){ try{ return JSON.parse(localStorage.getItem(k)) || fb; }catch{ return fb; } }
@@ -321,6 +321,13 @@
       const arr = load(KEY_B, DEFAULT_B);
       const j=document.getElementById('mdJd').value.trim(); const k=document.getElementById('mdKt').value.trim(); const i=document.getElementById('mdIsi').value.trim();
       if(!j || !i) return; arr.push({id:'b_'+Date.now(), judul:j, kategori:k, isi:i}); save(KEY_B, arr); closeModal(); renderBlog();
+    };
+
+    document.getElementById('btnClearAfirmasi').onclick = ()=>{
+      if(confirm('Reset semua afirmasi ke setelan awal?')) { save(KEY_A, DEFAULT_A); renderAfirmasi(); toast('Afirmasi direset'); }
+    };
+    document.getElementById('btnClearBlog').onclick = ()=>{
+      if(confirm('Reset semua artikel ke setelan awal?')) { save(KEY_B, DEFAULT_B); renderBlog(); toast('Artikel direset'); }
     };
 
     document.getElementById('btnExport').onclick = ()=>{

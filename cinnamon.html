@@ -157,7 +157,6 @@
         events: {
           'onReady': (event) => {
             event.target.playVideo();
-            // Upaya ekstra memicu play jika terkena blokir browser awal
             const startAudio = () => {
               if (player && typeof player.playVideo === 'function') {
                 player.playVideo();
@@ -181,7 +180,7 @@
     const diarySave = document.getElementById('diarySave');
 
     function escapeHtml(s){
-      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'<','>':'>','"':'"',"'":'&#39;'}[c]));
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
 
     function loadNotes(){
